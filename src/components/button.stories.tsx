@@ -40,6 +40,8 @@ export const Keyboard: Story = {
     const button = canvas.getByRole("button");
     await userEvent.tab();
     await expect(button).toHaveFocus();
+    // A focus indicator must actually paint, not just move focus (WCAG 2.4.7).
+    await expect(getComputedStyle(button).outlineStyle).not.toBe("none");
     await userEvent.keyboard("{Enter}");
     await expect(args.onClick).toHaveBeenCalledTimes(1);
     await userEvent.keyboard(" ");
