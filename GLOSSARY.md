@@ -63,3 +63,9 @@ _Avoid_: sito docs, playground, showcase
 **Docs per agenti**:
 La documentazione in Markdown spedita dentro il pacchetto, letta dagli agenti dalla versione installata.
 _Avoid_: llms.txt (è un formato, non il concetto), reference
+
+## Rilasci
+
+**Modifica incompatibile**:
+Un cambiamento che può rompere un consumatore che aggiorna senza toccare il proprio codice: rimuovere o rinominare una prop, un valore di variante o di dimensione, una parte, un attributo `data-slot`, un token del contratto o un percorso di import. Un cambio visivo dentro un tema esistente non lo è.
+_Avoid_: breaking change (come nome del concetto), rottura
