@@ -1,124 +1,26 @@
 <!doctype html>
 <!--
-  PROTOTIPO USA E GETTA (ticket "Direzione visiva dei due temi v0", mappa #2).
-  Domanda: quanto possono essere diversi due temi restando nel contratto dei token e passando AA?
-  Piano: il tema "Morbido" (identità) contro 3 candidati opposti, stessi componenti finti,
-  cambiati con ?tema= e ?schema= dalla barra in basso. Si apre con doppio clic.
+  PROTOTIPO USA E GETTA (ticket "Secondo tema v0" #15, mappa #2).
+  Domanda: quale secondo tema affianca il Brutalista, lontano da lui e da un template shadcn/SaaS?
+  Piano: Brutalista come riferimento + 4 candidati (Neon notturno, Risograph, Retro OS, Svizzero),
+  stessi componenti finti, cambiati con ?tema= e ?schema= dalla barra in basso. Si apre con doppio clic.
+  Morbido, Tecnico ed Editoriale (scartati nel #10) restano nella storia di questo branch.
   Non è codice della libreria: i componenti sono HTML+CSS che leggono solo i token --ui-*.
 -->
-<html lang="it" data-theme="morbido">
+<html lang="it" data-theme="brutalista">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prototipo: temi v0</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter+Tight:wght@400;500;600;800&family=Unbounded:wght@500;600&family=Space+Mono&family=Archivo:wght@400;600&family=Archivo+Black&family=Pixelify+Sans:wght@500;600&display=swap">
 <style>
 /* ---------- schema: data-scheme imposta solo color-scheme (ADR 0001) ---------- */
 :root { color-scheme: light dark; }
 [data-scheme="light"] { color-scheme: light; }
 [data-scheme="dark"] { color-scheme: dark; }
 
-/* ---------- TEMA 1: Morbido (identità) ---------- */
-[data-theme="morbido"] {
-  --ui-background: light-dark(oklch(0.985 0.012 85), oklch(0.22 0.03 285));
-  --ui-foreground: light-dark(oklch(0.28 0.04 285), oklch(0.95 0.015 85));
-  --ui-card: light-dark(oklch(1 0 0), oklch(0.26 0.035 285));
-  --ui-card-foreground: var(--ui-foreground);
-  --ui-popover: var(--ui-card);
-  --ui-popover-foreground: var(--ui-foreground);
-  --ui-primary: light-dark(oklch(0.53 0.2 290), oklch(0.8 0.12 290));
-  --ui-primary-foreground: light-dark(oklch(1 0 0), oklch(0.22 0.06 290));
-  --ui-secondary: light-dark(oklch(0.93 0.05 165), oklch(0.36 0.06 165));
-  --ui-secondary-foreground: light-dark(oklch(0.32 0.07 165), oklch(0.93 0.05 165));
-  --ui-muted: light-dark(oklch(0.955 0.015 85), oklch(0.3 0.03 285));
-  --ui-muted-foreground: light-dark(oklch(0.5 0.03 285), oklch(0.77 0.03 285));
-  --ui-accent: light-dark(oklch(0.93 0.05 350), oklch(0.36 0.08 350));
-  --ui-accent-foreground: light-dark(oklch(0.36 0.1 350), oklch(0.93 0.05 350));
-  --ui-destructive: light-dark(oklch(0.54 0.2 25), oklch(0.72 0.16 25));
-  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.2 0.05 25));
-  --ui-border: light-dark(oklch(0.9 0.02 285), oklch(0.36 0.03 285));
-  --ui-input: light-dark(oklch(0.62 0.04 285), oklch(0.6 0.04 285));
-  --ui-ring: var(--ui-primary);
-  --ui-font-sans: "Nunito", ui-rounded, system-ui, sans-serif;
-  --ui-font-heading: "Nunito", ui-rounded, system-ui, sans-serif;
-  --ui-font-mono: ui-monospace, monospace;
-  --ui-heading-weight: 800;
-  --ui-radius: 1rem;
-  --ui-shadow-sm: 0 1px 2px light-dark(oklch(0.5 0.08 290 / .12), oklch(0 0 0 / .4));
-  --ui-shadow-md: 0 10px 30px -8px light-dark(oklch(0.5 0.12 290 / .25), oklch(0 0 0 / .6));
-  --ui-duration: 220ms;
-  --ui-ease: cubic-bezier(.34, 1.56, .64, 1);
-  --spacing: 0.3rem;
-}
-
-/* ---------- Candidato B: Tecnico denso ---------- */
-[data-theme="tecnico"] {
-  --ui-background: light-dark(oklch(0.99 0 0), oklch(0.16 0.005 250));
-  --ui-foreground: light-dark(oklch(0.2 0.01 250), oklch(0.93 0.005 250));
-  --ui-card: light-dark(oklch(0.975 0.003 250), oklch(0.2 0.006 250));
-  --ui-card-foreground: var(--ui-foreground);
-  --ui-popover: light-dark(oklch(1 0 0), oklch(0.22 0.006 250));
-  --ui-popover-foreground: var(--ui-foreground);
-  --ui-primary: light-dark(oklch(0.52 0.24 265), oklch(0.72 0.17 255));
-  --ui-primary-foreground: light-dark(oklch(1 0 0), oklch(0.15 0.03 260));
-  --ui-secondary: light-dark(oklch(0.94 0.005 250), oklch(0.27 0.006 250));
-  --ui-secondary-foreground: var(--ui-foreground);
-  --ui-muted: light-dark(oklch(0.95 0.004 250), oklch(0.24 0.006 250));
-  --ui-muted-foreground: light-dark(oklch(0.48 0.01 250), oklch(0.7 0.01 250));
-  --ui-accent: light-dark(oklch(0.93 0.19 125), oklch(0.86 0.2 125));
-  --ui-accent-foreground: light-dark(oklch(0.25 0.06 125), oklch(0.2 0.05 125));
-  --ui-destructive: light-dark(oklch(0.52 0.21 25), oklch(0.68 0.19 25));
-  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.15 0.04 25));
-  --ui-border: light-dark(oklch(0.88 0.004 250), oklch(0.3 0.006 250));
-  --ui-input: light-dark(oklch(0.6 0.01 250), oklch(0.55 0.01 250));
-  --ui-ring: var(--ui-primary);
-  --ui-font-sans: "IBM Plex Sans", system-ui, sans-serif;
-  --ui-font-heading: "IBM Plex Sans", system-ui, sans-serif;
-  --ui-font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --ui-heading-weight: 600;
-  --ui-radius: 0.125rem;
-  --ui-shadow-sm: none;
-  --ui-shadow-md: 0 0 0 1px var(--ui-border), 0 4px 12px light-dark(oklch(0 0 0 / .08), oklch(0 0 0 / .5));
-  --ui-duration: 90ms;
-  --ui-ease: linear;
-  --spacing: 0.2rem;
-}
-
-/* ---------- Candidato C: Editoriale ---------- */
-[data-theme="editoriale"] {
-  --ui-background: light-dark(oklch(0.97 0.015 80), oklch(0.2 0.01 60));
-  --ui-foreground: light-dark(oklch(0.22 0.02 50), oklch(0.93 0.015 80));
-  --ui-card: light-dark(oklch(0.985 0.01 80), oklch(0.24 0.012 60));
-  --ui-card-foreground: var(--ui-foreground);
-  --ui-popover: var(--ui-card);
-  --ui-popover-foreground: var(--ui-foreground);
-  --ui-primary: light-dark(oklch(0.47 0.15 32), oklch(0.74 0.12 45));
-  --ui-primary-foreground: light-dark(oklch(0.98 0.01 80), oklch(0.2 0.03 40));
-  --ui-secondary: light-dark(oklch(0.92 0.02 80), oklch(0.3 0.015 60));
-  --ui-secondary-foreground: var(--ui-foreground);
-  --ui-muted: light-dark(oklch(0.93 0.015 80), oklch(0.27 0.012 60));
-  --ui-muted-foreground: light-dark(oklch(0.48 0.02 50), oklch(0.72 0.02 70));
-  --ui-accent: light-dark(oklch(0.9 0.04 140), oklch(0.33 0.04 140));
-  --ui-accent-foreground: light-dark(oklch(0.3 0.05 140), oklch(0.9 0.04 140));
-  --ui-destructive: light-dark(oklch(0.5 0.19 25), oklch(0.7 0.16 25));
-  --ui-destructive-foreground: light-dark(oklch(0.98 0.01 80), oklch(0.18 0.04 25));
-  --ui-border: light-dark(oklch(0.86 0.02 70), oklch(0.34 0.015 60));
-  --ui-input: light-dark(oklch(0.58 0.02 60), oklch(0.58 0.02 70));
-  --ui-ring: var(--ui-primary);
-  --ui-font-sans: "Inter", system-ui, sans-serif;
-  --ui-font-heading: "Fraunces", Georgia, serif;
-  --ui-font-mono: ui-monospace, monospace;
-  --ui-heading-weight: 600;
-  --ui-radius: 0.25rem;
-  --ui-shadow-sm: none;
-  --ui-shadow-md: 0 1px 0 var(--ui-border), 0 12px 24px -12px light-dark(oklch(0.3 0.03 50 / .3), oklch(0 0 0 / .6));
-  --ui-duration: 180ms;
-  --ui-ease: ease-out;
-  --spacing: 0.25rem;
-}
-
-/* ---------- Candidato D: Brutalista ---------- */
+/* ---------- Riferimento: Brutalista (identità, deciso nel ticket #10) ---------- */
 [data-theme="brutalista"] {
   --ui-background: light-dark(oklch(0.97 0.05 100), oklch(0.15 0 0));
   --ui-foreground: light-dark(oklch(0.15 0 0), oklch(0.96 0.06 100));
@@ -144,13 +46,154 @@
   --ui-font-mono: ui-monospace, monospace;
   --ui-heading-weight: 700;
   --ui-radius: 0rem;
+  --ui-border-width: 2px;
   --ui-shadow-sm: 3px 3px 0 var(--ui-foreground);
   --ui-shadow-md: 6px 6px 0 var(--ui-foreground);
   --ui-duration: 0ms;
   --ui-ease: steps(1);
   --spacing: 0.25rem;
-  /* FUORI CONTRATTO: il contratto non ha uno spessore dei bordi */
+}
+
+/* ---------- Candidato A: Neon notturno (nasce scuro; il chiaro è carta fotografica) ---------- */
+[data-theme="neon"] {
+  --ui-background: light-dark(oklch(0.97 0.012 300), oklch(0.15 0.035 285));
+  --ui-foreground: light-dark(oklch(0.22 0.05 285), oklch(0.95 0.02 285));
+  --ui-card: light-dark(oklch(1 0 0), oklch(0.19 0.04 285));
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: light-dark(oklch(1 0 0), oklch(0.21 0.045 285));
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.5 0.24 330), oklch(0.86 0.19 165));
+  --ui-primary-foreground: light-dark(oklch(0.99 0 0), oklch(0.18 0.05 165));
+  --ui-secondary: light-dark(oklch(0.93 0.04 220), oklch(0.3 0.08 230));
+  --ui-secondary-foreground: light-dark(oklch(0.3 0.09 230), oklch(0.9 0.08 210));
+  --ui-muted: light-dark(oklch(0.94 0.012 300), oklch(0.22 0.04 285));
+  --ui-muted-foreground: light-dark(oklch(0.48 0.04 285), oklch(0.74 0.04 285));
+  --ui-accent: light-dark(oklch(0.93 0.06 330), oklch(0.32 0.12 330));
+  --ui-accent-foreground: light-dark(oklch(0.35 0.15 330), oklch(0.93 0.06 330));
+  --ui-destructive: light-dark(oklch(0.53 0.21 20), oklch(0.72 0.19 20));
+  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.16 0.05 20));
+  --ui-border: light-dark(oklch(0.88 0.03 300), oklch(0.32 0.06 285));
+  --ui-input: light-dark(oklch(0.6 0.06 300), oklch(0.58 0.08 285));
+  --ui-ring: var(--ui-primary);
+  --ui-font-sans: "Inter Tight", system-ui, sans-serif;
+  --ui-font-heading: "Unbounded", system-ui, sans-serif;
+  --ui-font-mono: "Space Mono", ui-monospace, monospace;
+  --ui-heading-weight: 600;
+  --ui-radius: 0.625rem;
+  --ui-border-width: 1px;
+  --ui-shadow-sm: 0 0 18px -4px color-mix(in oklch, var(--ui-primary) 55%, transparent);
+  --ui-shadow-md: 0 0 0 1px color-mix(in oklch, var(--ui-primary) 35%, transparent), 0 12px 40px -8px color-mix(in oklch, var(--ui-primary) 45%, transparent);
+  --ui-duration: 260ms;
+  --ui-ease: cubic-bezier(.2, .8, .2, 1);
+  --spacing: 0.27rem;
+}
+
+/* ---------- Candidato B: Risograph (due inchiostri su carta, superfici piene, niente ombre) ---------- */
+[data-theme="riso"] {
+  --ui-background: light-dark(oklch(0.96 0.025 90), oklch(0.2 0.06 265));
+  --ui-foreground: light-dark(oklch(0.36 0.17 265), oklch(0.95 0.03 90));
+  --ui-card: light-dark(oklch(0.9 0.06 355), oklch(0.27 0.09 265));
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: light-dark(oklch(0.99 0.01 90), oklch(0.3 0.1 265));
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.66 0.25 0), oklch(0.75 0.2 0));
+  --ui-primary-foreground: light-dark(oklch(0.25 0.13 265), oklch(0.2 0.08 265));
+  --ui-secondary: light-dark(oklch(0.88 0.1 200), oklch(0.4 0.12 250));
+  --ui-secondary-foreground: light-dark(oklch(0.3 0.15 265), oklch(0.96 0.03 90));
+  --ui-muted: light-dark(oklch(0.92 0.03 90), oklch(0.25 0.07 265));
+  --ui-muted-foreground: light-dark(oklch(0.46 0.12 265), oklch(0.8 0.05 265));
+  --ui-accent: oklch(0.87 0.17 100);
+  --ui-accent-foreground: light-dark(oklch(0.3 0.15 265), oklch(0.25 0.12 265));
+  --ui-destructive: light-dark(oklch(0.48 0.2 25), oklch(0.75 0.17 30));
+  --ui-destructive-foreground: light-dark(oklch(0.98 0.01 90), oklch(0.2 0.08 265));
+  --ui-border: var(--ui-card);
+  --ui-input: var(--ui-foreground);
+  --ui-ring: light-dark(oklch(0.36 0.17 265), oklch(0.87 0.17 100));
+  --ui-font-sans: "Archivo", system-ui, sans-serif;
+  --ui-font-heading: "Archivo Black", system-ui, sans-serif;
+  --ui-font-mono: "Space Mono", ui-monospace, monospace;
+  --ui-heading-weight: 400;
+  --ui-radius: 1.25rem;
   --ui-border-width: 2px;
+  --ui-shadow-sm: none;
+  --ui-shadow-md: none;
+  --ui-duration: 150ms;
+  --ui-ease: ease-out;
+  --spacing: 0.28rem;
+}
+
+/* ---------- Candidato C: Retro OS (rilievo anni 90, bevel con ombre inset) ---------- */
+[data-theme="retro"] {
+  --ui-background: light-dark(oklch(0.8 0.005 90), oklch(0.27 0.01 260));
+  --ui-foreground: light-dark(oklch(0.1 0 0), oklch(0.95 0 0));
+  --ui-card: var(--ui-background);
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: light-dark(oklch(0.8 0.005 90), oklch(0.3 0.01 260));
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.32 0.17 265), oklch(0.75 0.13 230));
+  --ui-primary-foreground: light-dark(oklch(1 0 0), oklch(0.15 0.02 260));
+  --ui-secondary: light-dark(oklch(0.8 0.005 90), oklch(0.3 0.01 260));
+  --ui-secondary-foreground: var(--ui-foreground);
+  --ui-muted: light-dark(oklch(0.86 0.005 90), oklch(0.24 0.01 260));
+  --ui-muted-foreground: light-dark(oklch(0.38 0 0), oklch(0.78 0 0));
+  --ui-accent: var(--ui-primary);
+  --ui-accent-foreground: var(--ui-primary-foreground);
+  --ui-destructive: light-dark(oklch(0.4 0.17 28), oklch(0.75 0.16 28));
+  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.15 0 0));
+  --ui-border: light-dark(oklch(0.45 0 0), oklch(0.15 0 0));
+  --ui-input: light-dark(oklch(0.45 0 0), oklch(0.6 0 0));
+  --ui-ring: var(--ui-foreground);
+  --ui-font-sans: Tahoma, Verdana, system-ui, sans-serif;
+  --ui-font-heading: "Pixelify Sans", Tahoma, sans-serif;
+  --ui-font-mono: "Courier New", ui-monospace, monospace;
+  --ui-heading-weight: 600;
+  --ui-radius: 0rem;
+  --ui-border-width: 1px;
+  --ui-shadow-sm:
+    inset -1px -1px 0 light-dark(oklch(0.1 0 0), oklch(0.08 0 0)),
+    inset 1px 1px 0 light-dark(oklch(1 0 0), oklch(0.5 0.01 260)),
+    inset -2px -2px 0 light-dark(oklch(0.55 0 0), oklch(0.18 0 0)),
+    inset 2px 2px 0 light-dark(oklch(0.9 0 0), oklch(0.4 0.01 260));
+  --ui-shadow-md: var(--ui-shadow-sm), 2px 2px 0 oklch(0 0 0 / .4);
+  --ui-duration: 0ms;
+  --ui-ease: steps(1);
+  --spacing: 0.22rem;
+}
+
+/* ---------- Candidato D: Svizzero tipografico (griglia, nero + rosso, niente ombre) ---------- */
+[data-theme="svizzero"] {
+  --ui-background: light-dark(oklch(1 0 0), oklch(0.13 0 0));
+  --ui-foreground: light-dark(oklch(0.13 0 0), oklch(0.98 0 0));
+  --ui-card: var(--ui-background);
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: var(--ui-background);
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.56 0.23 28), oklch(0.65 0.22 28));
+  --ui-primary-foreground: light-dark(oklch(1 0 0), oklch(0.13 0 0));
+  --ui-secondary: var(--ui-foreground);
+  --ui-secondary-foreground: var(--ui-background);
+  --ui-muted: light-dark(oklch(0.95 0 0), oklch(0.2 0 0));
+  --ui-muted-foreground: light-dark(oklch(0.45 0 0), oklch(0.72 0 0));
+  --ui-accent: light-dark(oklch(0.95 0 0), oklch(0.22 0 0));
+  --ui-accent-foreground: var(--ui-foreground);
+  --ui-destructive: light-dark(oklch(0.5 0.2 28), oklch(0.72 0.18 28));
+  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.13 0 0));
+  --ui-border: var(--ui-foreground);
+  --ui-input: var(--ui-foreground);
+  --ui-ring: var(--ui-primary);
+  --ui-font-sans: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --ui-font-heading: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --ui-font-mono: "Space Mono", ui-monospace, monospace;
+  --ui-heading-weight: 800;
+  --ui-radius: 0rem;
+  --ui-border-width: 1px;
+  --ui-shadow-sm: none;
+  --ui-shadow-md: none;
+  --ui-duration: 120ms;
+  --ui-ease: ease;
+  --spacing: 0.34rem;
+  /* FUORI CONTRATTO: il contratto non ha una scala tipografica */
+  --ui-heading-scale: 1.8;
 }
 
 /* ---------- "componenti" finti: leggono solo token ---------- */
@@ -165,7 +208,7 @@ body { margin: 0; }
 .panes { display: grid; grid-template-columns: 1fr; }
 .panes.split { grid-template-columns: 1fr 1fr; }
 h1, h2, h3 { font-family: var(--ui-font-heading); font-weight: var(--ui-heading-weight); line-height: 1.15; margin: 0; }
-h1 { font-size: 2rem; } h2 { font-size: 1.35rem; } h3 { font-size: 1.05rem; }
+h1 { font-size: calc(2rem * var(--ui-heading-scale, 1)); letter-spacing: calc((1 - var(--ui-heading-scale, 1)) * .03em); } h2 { font-size: calc(1.35rem * sqrt(var(--ui-heading-scale, 1))); } h3 { font-size: 1.05rem; }
 .muted { color: var(--ui-muted-foreground); }
 .mono { font-family: var(--ui-font-mono); font-size: .85em; }
 .stack { display: flex; flex-direction: column; gap: calc(var(--spacing) * var(--g, 4)); }
@@ -219,7 +262,7 @@ h1 { font-size: 2rem; } h2 { font-size: 1.35rem; } h3 { font-size: 1.05rem; }
 .dialog { max-width: 380px; padding: calc(var(--spacing) * 6); }
 .toast { display: flex; gap: calc(var(--spacing) * 3); align-items: flex-start; padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4); }
 .badge { display: inline-block; padding: 0 calc(var(--spacing) * 2); border-radius: 999px; background: var(--ui-secondary); color: var(--ui-secondary-foreground); font-size: .8em; font-weight: 600; }
-[data-theme="tecnico"] .badge, [data-theme="brutalista"] .badge { border-radius: var(--ui-radius); }
+[data-theme="brutalista"] .badge, [data-theme="retro"] .badge, [data-theme="svizzero"] .badge { border-radius: var(--ui-radius); }
 .swatch-strip { display: flex; gap: 4px; flex-wrap: wrap; }
 .swatch-strip span { width: 28px; height: 28px; border-radius: calc(var(--ui-radius) * .4); border: var(--bw) solid var(--ui-border); }
 
@@ -371,11 +414,19 @@ h1 { font-size: 2rem; } h2 { font-size: 1.35rem; } h3 { font-size: 1.05rem; }
 
 <script>
 const THEMES = [
-  ["morbido", "A · Morbido (identità)"],
-  ["tecnico", "B · Tecnico denso"],
-  ["editoriale", "C · Editoriale"],
-  ["brutalista", "D · Brutalista"],
+  ["brutalista", "Riferimento · Brutalista"],
+  ["neon", "A · Neon notturno"],
+  ["riso", "B · Risograph"],
+  ["retro", "C · Retro OS"],
+  ["svizzero", "D · Svizzero tipografico"],
 ];
+// cosa il contratto non riesce a esprimere, per tema
+const NOTES = {
+  neon: "Il glow usa color-mix su --ui-primary: segue il tema senza token nuovi.",
+  riso: "Retino e grana della stampa non si esprimono con i token: servirebbe un token di texture (non provato). Bordo delle card = colore della card.",
+  retro: "Mancano un bevel incavato per i campi e un fondo bianco per gli input (l'input usa --ui-background). Il bottone premuto non si inverte.",
+  svizzero: "Fuori contratto: --ui-heading-scale (il contratto non ha una scala tipografica). Primario e distruttivo sono tutti e due rossi.",
+};
 // coppie del contratto: [testo/primo piano, sfondo, soglia]
 const PAIRS = [
   ["foreground", "background", 4.5], ["card-foreground", "card", 4.5], ["popover-foreground", "popover", 4.5],
@@ -386,7 +437,8 @@ const PAIRS = [
   ["input", "background", 3], ["ring", "background", 3],
 ];
 const url = new URL(location.href);
-let theme = url.searchParams.get("tema") ?? "morbido";
+let theme = url.searchParams.get("tema") ?? "brutalista";
+if (!THEMES.some(t => t[0] === theme)) theme = "brutalista";
 let schema = url.searchParams.get("schema") ?? "light";
 const panes = document.getElementById("panes");
 const tpl = document.getElementById("page");
@@ -426,7 +478,7 @@ function renderAA() {
     const cells = [pl, pd].map(p => { const r = ratio(rgb(p, fg), rgb(p, bg)); if (r < min) fails++; return `<td class="${r < min ? "ko" : "ok"}">${r.toFixed(2)}</td>`; });
     return `<tr><td>${fg} / ${bg}</td><td>${min}</td>${cells.join("")}</tr>`;
   }).join("");
-  const extra = theme === "brutalista" ? `<p class="note">Fuori contratto: --ui-border-width (il contratto non ha uno spessore dei bordi).</p>` : "";
+  const extra = NOTES[theme] ? `<p class="note">${NOTES[theme]}</p>` : "";
   document.getElementById("aa-panel").innerHTML =
     `<b>${THEMES.find(t => t[0] === theme)[1]}</b> · ${fails ? `<span class="ko">${fails} coppie sotto soglia</span>` : `<span class="ok">tutte le coppie AA</span>`}
      <table><tr><th>coppia</th><th>min</th><th>chiaro</th><th>scuro</th></tr>${rows}</table>${extra}`;
