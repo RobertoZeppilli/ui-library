@@ -26,6 +26,7 @@
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc",
     "build": "tsdown",
+    "pack:check": "pnpm pack --dry-run",
     "build:example": "pnpm build && pnpm --filter trama-example-next build"
   },
   "peerDependencies": {
