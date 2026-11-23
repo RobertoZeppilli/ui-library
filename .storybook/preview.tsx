@@ -48,16 +48,16 @@ const preview: Preview = {
     if (failures.length > 0) throw new Error(`axe violations in ${context.id}:\n${failures.join("\n")}`);
   },
   globalTypes: {
-    tema: {
+    uiTheme: {
       description: "Theme",
       toolbar: { title: "Theme", items: themes, dynamicTitle: true },
     },
   },
-  initialGlobals: { tema: themes[0] },
+  initialGlobals: { uiTheme: themes[0] },
   decorators: [
     (Story, context) => {
       // Outside Vitest the toolbar picks the theme; the axe loop above sets it itself.
-      document.documentElement.dataset.theme = String(context.globals.tema);
+      document.documentElement.dataset.theme = String(context.globals.uiTheme);
       return <Story />;
     },
     withThemeByDataAttribute({
