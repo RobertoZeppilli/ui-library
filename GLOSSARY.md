@@ -54,6 +54,16 @@ _Avoid_: colore (come nome della prop), variante di colore
 Una prop di un componente di layout che accetta un valore diverso per ogni breakpoint, a partire da un valore iniziale senza media query.
 _Avoid_: prop adattiva, breakpoint prop
 
+## Documentazione
+
+**Vetrina**:
+Il catalogo pubblico per le persone, dove si guardano i componenti in ogni tema e schema e si legge come installare la libreria.
+_Avoid_: sito docs, playground, showcase
+
+**Docs per agenti**:
+La documentazione in Markdown spedita dentro il pacchetto, letta dagli agenti dalla versione installata.
+_Avoid_: llms.txt (è un formato, non il concetto), reference
+
 ## Rilasci
 
 **Modifica incompatibile**:
