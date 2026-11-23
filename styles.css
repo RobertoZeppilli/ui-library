@@ -34,6 +34,13 @@
   --font-sans: var(--ui-font-sans);
   --font-heading: var(--ui-font-heading);
   --font-mono: var(--ui-font-mono);
+  --font-weight-heading: var(--ui-heading-weight);
+
+  /* clear Tailwind's fixed scales so only contract-driven values remain */
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
 
   --radius-xs: calc(var(--ui-radius) * 0.35);
   --radius-sm: calc(var(--ui-radius) * 0.5);
@@ -51,7 +58,7 @@
 /* Tailwind has no theme key for border width: border-ui reads the token. */
 @utility border-ui {
   border-style: var(--tw-border-style, solid);
-  border-width: var(--ui-border-width);
+  border-width: var(--ui-border-width, 1px);
 }
 
 @media (prefers-reduced-motion: reduce) {
