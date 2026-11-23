@@ -1,4 +1,4 @@
-# ui-library
+# trama
 
 UI library personale per progetti React nuovi: componenti accessibili e temi intercambiabili, pensati per essere usati soprattutto da agenti.
 
