@@ -5,7 +5,7 @@ UI library personale per progetti React nuovi: componenti accessibili e temi int
 ## Temi
 
 **Tema**:
-L'identità visiva di un progetto: colori, font, raggi, ombre, motion e spaziatura, espressi come valori dei token del contratto.
+L'identità visiva di un progetto: colori, font, raggi, spessore dei bordi, ombre, motion e spaziatura, espressi come valori dei token del contratto.
 _Avoid_: skin, stile, brand
 
 **Schema**:
