@@ -3,7 +3,7 @@ import { expect, userEvent, fn } from "storybook/test";
 import { Button } from "./button";
 
 const variants = ["default", "outline", "secondary", "ghost", "destructive", "link"] as const;
-const sizes = ["default", "xs", "sm", "lg"] as const;
+const sizes = ["default", "xs", "sm", "lg", "icon", "icon-xs", "icon-sm", "icon-lg"] as const;
 
 const meta = {
   title: "Button",
@@ -21,14 +21,17 @@ export const Variants: Story = {
     <div className="flex flex-col gap-4 p-4">
       {variants.map((variant) => (
         <div key={variant} className="flex flex-wrap items-center gap-2">
-          {sizes.map((size) => (
-            <Button key={size} variant={variant} size={size}>
-              {variant} {size}
-            </Button>
-          ))}
-          <Button variant={variant} size="icon" aria-label={`${variant} icon`}>
-            +
-          </Button>
+          {sizes.map((size) =>
+            size.startsWith("icon") ? (
+              <Button key={size} variant={variant} size={size} aria-label={`${variant} ${size}`}>
+                +
+              </Button>
+            ) : (
+              <Button key={size} variant={variant} size={size}>
+                {variant} {size}
+              </Button>
+            ),
+          )}
         </div>
       ))}
     </div>
