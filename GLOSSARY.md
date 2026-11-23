@@ -53,3 +53,9 @@ _Avoid_: colore (come nome della prop), variante di colore
 **Prop responsive**:
 Una prop di un componente di layout che accetta un valore diverso per ogni breakpoint, a partire da un valore iniziale senza media query.
 _Avoid_: prop adattiva, breakpoint prop
+
+## Rilasci
+
+**Modifica incompatibile**:
+Un cambiamento che può rompere un consumatore che aggiorna senza toccare il proprio codice: rimuovere o rinominare una prop, un valore di variante o di dimensione, una parte, un attributo `data-slot`, un token del contratto o un percorso di import. Un cambio visivo dentro un tema esistente non lo è.
+_Avoid_: breaking change (come nome del concetto), rottura
