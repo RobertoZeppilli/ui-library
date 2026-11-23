@@ -1,0 +1,4 @@
+@import "tailwindcss";
+@import "trama/styles.css";
+@import "trama/themes/brutalista.css";
+@import "trama/themes/neon.css";

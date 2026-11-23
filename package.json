@@ -1,23 +1,46 @@
 {
   "name": "trama",
   "version": "0.0.0",
-  "private": true,
   "type": "module",
   "packageManager": "pnpm@11.5.0",
   "engines": {
     "node": ">=24"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "./styles.css": "./styles.css",
+    "./themes/*.css": "./themes/*.css"
+  },
+  "files": [
+    "dist",
+    "styles.css",
+    "themes"
+  ],
   "scripts": {
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc",
-    "build":"echo shortcut: no build yet, tsdown replaces this in #35"
+    "build": "tsdown",
+    "prepack": "pnpm build",
+    "pack:check": "pnpm pack --dry-run",
+    "build:example": "pnpm build && pnpm --filter trama-example-next build"
   },
-  "devDependencies": {
-    "typescript": "^7.0.2",
-    "vitest": "^5.1.1"
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "tailwindcss": "^4"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.1"
+  },
+  "devDependencies": {
     "@storybook/addon-a11y": "^10.6.8",
     "@storybook/addon-themes": "^10.6.8",
     "@storybook/addon-vitest": "^10.6.8",
@@ -25,12 +48,13 @@
     "@tailwindcss/vite": "^4.3.5",
     "@types/react": "^19.3.0",
     "@vitest/browser-playwright": "^5.1.1",
-    "clsx": "^2.1.1",
     "playwright": "^1.65.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "storybook": "^10.6.8",
-    "tailwind-merge": "^3.7.1",
-    "tailwindcss": "^4.3.5"
+    "tailwindcss": "^4.3.5",
+    "tsdown": "^0.23.7",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.1"
   }
 }

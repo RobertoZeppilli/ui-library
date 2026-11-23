@@ -1,0 +1,22 @@
+{
+  "name": "trama-example-next",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "next build"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.3.5",
+    "@types/react": "^19.3.0",
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.5",
+    "trama": "workspace:*",
+    "typescript": "^7.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.6"
+  }
+}
