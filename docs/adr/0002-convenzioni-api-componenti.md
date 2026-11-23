@@ -21,4 +21,4 @@ La libreria la usano soprattutto agenti, e il criterio è che un agente indovini
 
 - Prima di inventare un nome si controlla shadcn (Base UI). Ogni scostamento si annota nelle docs del componente.
 - Un `asChild` scritto per abitudine dà errore TS. Lo snippet `AGENTS.md` lo dice esplicitamente.
-- Le classi responsive dei layout vanno pre-generate per ogni valore × breakpoint e devono arrivare a Tailwind del consumatore: pesa sul CSS ed è da verificare con il primo Stack.
+- Le classi responsive dei layout si pre-generano per ogni valore × breakpoint, come stringhe letterali nel `dist`, e arrivano al Tailwind del consumatore con `@source "./dist"` (verificato in Next 16 + Turbopack). Il costo è circa +1,3 kB gzip per 216 classi, cresce in modo lineare con valori e props ed è accettato. Scartate le variabili CSS inline (+0,2 kB): style nel DOM e un mapping CSS a mano per ogni prop. Prototipo sul branch `prototype/classi-responsive`.
