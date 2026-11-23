@@ -8,7 +8,8 @@
     "node": ">=24"
   },
   "scripts": {
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run --passWithNoTests",
+    "build": "echo shortcut: no build yet, tsdown replaces this in #35"
   },
   "devDependencies": {
     "typescript": "^7.0.2",
