@@ -26,4 +26,14 @@ _Avoid_: token locale, override
 
 **Primitivo**:
 Un valore grezzo della palette di un tema, privato del tema e fuori dal contratto.
-_Avoid_: token base, token di palette
+_Avoid_: token base, token di palette, primitiva
+
+## Componenti
+
+**Primitiva headless**:
+Un componente senza stile, fornito da una libreria esterna, che dà comportamento e accessibilità a un componente della libreria. Si scrive sempre con l'aggettivo, per non confonderla con un primitivo della palette.
+_Avoid_: primitiva (da sola), base, headless component
+
+**Componente di layout**:
+Un componente senza comportamento che dispone o compone testo e altri componenti usando i token del tema (spaziatura, scala tipografica).
+_Avoid_: primitiva di layout, layout primitive
