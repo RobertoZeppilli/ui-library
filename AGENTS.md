@@ -17,5 +17,5 @@ Single-context: `GLOSSARY.md` and `docs/adr/` at the repo root. See `docs/agents
 ## tai
 
 ```json
-{}
+{ "dev": "pnpm exec storybook dev --port {porta} --host {host} --ci" }
 ```
