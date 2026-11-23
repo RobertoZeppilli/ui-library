@@ -50,7 +50,7 @@
 
 /* Tailwind has no theme key for border width: border-ui reads the token. */
 @utility border-ui {
-  border-style: var(--tw-border-style);
+  border-style: var(--tw-border-style, solid);
   border-width: var(--ui-border-width);
 }
 
