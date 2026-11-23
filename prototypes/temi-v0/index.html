@@ -1,0 +1,448 @@
+<!doctype html>
+<!--
+  PROTOTIPO USA E GETTA (ticket "Direzione visiva dei due temi v0", mappa #2).
+  Domanda: quanto possono essere diversi due temi restando nel contratto dei token e passando AA?
+  Piano: il tema "Morbido" (identità) contro 3 candidati opposti, stessi componenti finti,
+  cambiati con ?tema= e ?schema= dalla barra in basso. Si apre con doppio clic.
+  Non è codice della libreria: i componenti sono HTML+CSS che leggono solo i token --ui-*.
+-->
+<html lang="it" data-theme="morbido">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prototipo: temi v0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;700&display=swap">
+<style>
+/* ---------- schema: data-scheme imposta solo color-scheme (ADR 0001) ---------- */
+:root { color-scheme: light dark; }
+[data-scheme="light"] { color-scheme: light; }
+[data-scheme="dark"] { color-scheme: dark; }
+
+/* ---------- TEMA 1: Morbido (identità) ---------- */
+[data-theme="morbido"] {
+  --ui-background: light-dark(oklch(0.985 0.012 85), oklch(0.22 0.03 285));
+  --ui-foreground: light-dark(oklch(0.28 0.04 285), oklch(0.95 0.015 85));
+  --ui-card: light-dark(oklch(1 0 0), oklch(0.26 0.035 285));
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: var(--ui-card);
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.53 0.2 290), oklch(0.8 0.12 290));
+  --ui-primary-foreground: light-dark(oklch(1 0 0), oklch(0.22 0.06 290));
+  --ui-secondary: light-dark(oklch(0.93 0.05 165), oklch(0.36 0.06 165));
+  --ui-secondary-foreground: light-dark(oklch(0.32 0.07 165), oklch(0.93 0.05 165));
+  --ui-muted: light-dark(oklch(0.955 0.015 85), oklch(0.3 0.03 285));
+  --ui-muted-foreground: light-dark(oklch(0.5 0.03 285), oklch(0.77 0.03 285));
+  --ui-accent: light-dark(oklch(0.93 0.05 350), oklch(0.36 0.08 350));
+  --ui-accent-foreground: light-dark(oklch(0.36 0.1 350), oklch(0.93 0.05 350));
+  --ui-destructive: light-dark(oklch(0.54 0.2 25), oklch(0.72 0.16 25));
+  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.2 0.05 25));
+  --ui-border: light-dark(oklch(0.9 0.02 285), oklch(0.36 0.03 285));
+  --ui-input: light-dark(oklch(0.62 0.04 285), oklch(0.6 0.04 285));
+  --ui-ring: var(--ui-primary);
+  --ui-font-sans: "Nunito", ui-rounded, system-ui, sans-serif;
+  --ui-font-heading: "Nunito", ui-rounded, system-ui, sans-serif;
+  --ui-font-mono: ui-monospace, monospace;
+  --ui-heading-weight: 800;
+  --ui-radius: 1rem;
+  --ui-shadow-sm: 0 1px 2px light-dark(oklch(0.5 0.08 290 / .12), oklch(0 0 0 / .4));
+  --ui-shadow-md: 0 10px 30px -8px light-dark(oklch(0.5 0.12 290 / .25), oklch(0 0 0 / .6));
+  --ui-duration: 220ms;
+  --ui-ease: cubic-bezier(.34, 1.56, .64, 1);
+  --spacing: 0.3rem;
+}
+
+/* ---------- Candidato B: Tecnico denso ---------- */
+[data-theme="tecnico"] {
+  --ui-background: light-dark(oklch(0.99 0 0), oklch(0.16 0.005 250));
+  --ui-foreground: light-dark(oklch(0.2 0.01 250), oklch(0.93 0.005 250));
+  --ui-card: light-dark(oklch(0.975 0.003 250), oklch(0.2 0.006 250));
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: light-dark(oklch(1 0 0), oklch(0.22 0.006 250));
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.52 0.24 265), oklch(0.72 0.17 255));
+  --ui-primary-foreground: light-dark(oklch(1 0 0), oklch(0.15 0.03 260));
+  --ui-secondary: light-dark(oklch(0.94 0.005 250), oklch(0.27 0.006 250));
+  --ui-secondary-foreground: var(--ui-foreground);
+  --ui-muted: light-dark(oklch(0.95 0.004 250), oklch(0.24 0.006 250));
+  --ui-muted-foreground: light-dark(oklch(0.48 0.01 250), oklch(0.7 0.01 250));
+  --ui-accent: light-dark(oklch(0.93 0.19 125), oklch(0.86 0.2 125));
+  --ui-accent-foreground: light-dark(oklch(0.25 0.06 125), oklch(0.2 0.05 125));
+  --ui-destructive: light-dark(oklch(0.52 0.21 25), oklch(0.68 0.19 25));
+  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.15 0.04 25));
+  --ui-border: light-dark(oklch(0.88 0.004 250), oklch(0.3 0.006 250));
+  --ui-input: light-dark(oklch(0.6 0.01 250), oklch(0.55 0.01 250));
+  --ui-ring: var(--ui-primary);
+  --ui-font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --ui-font-heading: "IBM Plex Sans", system-ui, sans-serif;
+  --ui-font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ui-heading-weight: 600;
+  --ui-radius: 0.125rem;
+  --ui-shadow-sm: none;
+  --ui-shadow-md: 0 0 0 1px var(--ui-border), 0 4px 12px light-dark(oklch(0 0 0 / .08), oklch(0 0 0 / .5));
+  --ui-duration: 90ms;
+  --ui-ease: linear;
+  --spacing: 0.2rem;
+}
+
+/* ---------- Candidato C: Editoriale ---------- */
+[data-theme="editoriale"] {
+  --ui-background: light-dark(oklch(0.97 0.015 80), oklch(0.2 0.01 60));
+  --ui-foreground: light-dark(oklch(0.22 0.02 50), oklch(0.93 0.015 80));
+  --ui-card: light-dark(oklch(0.985 0.01 80), oklch(0.24 0.012 60));
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: var(--ui-card);
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.47 0.15 32), oklch(0.74 0.12 45));
+  --ui-primary-foreground: light-dark(oklch(0.98 0.01 80), oklch(0.2 0.03 40));
+  --ui-secondary: light-dark(oklch(0.92 0.02 80), oklch(0.3 0.015 60));
+  --ui-secondary-foreground: var(--ui-foreground);
+  --ui-muted: light-dark(oklch(0.93 0.015 80), oklch(0.27 0.012 60));
+  --ui-muted-foreground: light-dark(oklch(0.48 0.02 50), oklch(0.72 0.02 70));
+  --ui-accent: light-dark(oklch(0.9 0.04 140), oklch(0.33 0.04 140));
+  --ui-accent-foreground: light-dark(oklch(0.3 0.05 140), oklch(0.9 0.04 140));
+  --ui-destructive: light-dark(oklch(0.5 0.19 25), oklch(0.7 0.16 25));
+  --ui-destructive-foreground: light-dark(oklch(0.98 0.01 80), oklch(0.18 0.04 25));
+  --ui-border: light-dark(oklch(0.86 0.02 70), oklch(0.34 0.015 60));
+  --ui-input: light-dark(oklch(0.58 0.02 60), oklch(0.58 0.02 70));
+  --ui-ring: var(--ui-primary);
+  --ui-font-sans: "Inter", system-ui, sans-serif;
+  --ui-font-heading: "Fraunces", Georgia, serif;
+  --ui-font-mono: ui-monospace, monospace;
+  --ui-heading-weight: 600;
+  --ui-radius: 0.25rem;
+  --ui-shadow-sm: none;
+  --ui-shadow-md: 0 1px 0 var(--ui-border), 0 12px 24px -12px light-dark(oklch(0.3 0.03 50 / .3), oklch(0 0 0 / .6));
+  --ui-duration: 180ms;
+  --ui-ease: ease-out;
+  --spacing: 0.25rem;
+}
+
+/* ---------- Candidato D: Brutalista ---------- */
+[data-theme="brutalista"] {
+  --ui-background: light-dark(oklch(0.97 0.05 100), oklch(0.15 0 0));
+  --ui-foreground: light-dark(oklch(0.15 0 0), oklch(0.96 0.06 100));
+  --ui-card: light-dark(oklch(1 0 0), oklch(0.2 0 0));
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: var(--ui-card);
+  --ui-popover-foreground: var(--ui-foreground);
+  --ui-primary: light-dark(oklch(0.15 0 0), oklch(0.9 0.17 100));
+  --ui-primary-foreground: light-dark(oklch(0.97 0.05 100), oklch(0.15 0 0));
+  --ui-secondary: light-dark(oklch(0.85 0.12 200), oklch(0.45 0.1 200));
+  --ui-secondary-foreground: light-dark(oklch(0.15 0 0), oklch(0.98 0 0));
+  --ui-muted: light-dark(oklch(0.92 0.04 100), oklch(0.24 0 0));
+  --ui-muted-foreground: light-dark(oklch(0.4 0.02 100), oklch(0.78 0.03 100));
+  --ui-accent: light-dark(oklch(0.82 0.15 350), oklch(0.5 0.17 350));
+  --ui-accent-foreground: light-dark(oklch(0.15 0 0), oklch(0.98 0 0));
+  --ui-destructive: light-dark(oklch(0.55 0.22 28), oklch(0.68 0.2 28));
+  --ui-destructive-foreground: light-dark(oklch(1 0 0), oklch(0.15 0 0));
+  --ui-border: var(--ui-foreground);
+  --ui-input: var(--ui-foreground);
+  --ui-ring: light-dark(oklch(0.55 0.22 28), oklch(0.9 0.17 100));
+  --ui-font-sans: "Space Grotesk", system-ui, sans-serif;
+  --ui-font-heading: "Space Grotesk", system-ui, sans-serif;
+  --ui-font-mono: ui-monospace, monospace;
+  --ui-heading-weight: 700;
+  --ui-radius: 0rem;
+  --ui-shadow-sm: 3px 3px 0 var(--ui-foreground);
+  --ui-shadow-md: 6px 6px 0 var(--ui-foreground);
+  --ui-duration: 0ms;
+  --ui-ease: steps(1);
+  --spacing: 0.25rem;
+  /* FUORI CONTRATTO: il contratto non ha uno spessore dei bordi */
+  --ui-border-width: 2px;
+}
+
+/* ---------- "componenti" finti: leggono solo token ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; }
+.pane {
+  background: var(--ui-background); color: var(--ui-foreground);
+  font-family: var(--ui-font-sans); font-size: 15px; line-height: 1.5;
+  padding: calc(var(--spacing) * 6); min-height: 100vh; padding-bottom: 140px;
+  --bw: var(--ui-border-width, 1px);
+}
+.panes { display: grid; grid-template-columns: 1fr; }
+.panes.split { grid-template-columns: 1fr 1fr; }
+h1, h2, h3 { font-family: var(--ui-font-heading); font-weight: var(--ui-heading-weight); line-height: 1.15; margin: 0; }
+h1 { font-size: 2rem; } h2 { font-size: 1.35rem; } h3 { font-size: 1.05rem; }
+.muted { color: var(--ui-muted-foreground); }
+.mono { font-family: var(--ui-font-mono); font-size: .85em; }
+.stack { display: flex; flex-direction: column; gap: calc(var(--spacing) * var(--g, 4)); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: calc(var(--spacing) * var(--g, 3)); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: calc(var(--spacing) * 5); align-items: start; }
+
+.shell-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: calc(var(--spacing) * 5); margin-bottom: calc(var(--spacing) * 6); border-bottom: var(--bw) solid var(--ui-border); }
+.logo { font-family: var(--ui-font-heading); font-weight: var(--ui-heading-weight); font-size: 1.2rem; }
+
+.btn {
+  font: inherit; font-weight: 600; cursor: pointer; border: var(--bw) solid transparent;
+  border-radius: calc(var(--ui-radius) * .75); padding: calc(var(--spacing) * 2) calc(var(--spacing) * 4);
+  transition: transform var(--ui-duration) var(--ui-ease), background var(--ui-duration), box-shadow var(--ui-duration);
+  background: var(--ui-primary); color: var(--ui-primary-foreground); box-shadow: var(--ui-shadow-sm);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible, .input:focus-visible, .check:focus-visible, .select:focus-visible { outline: 2px solid var(--ui-ring); outline-offset: 2px; }
+.btn[data-variant="secondary"] { background: var(--ui-secondary); color: var(--ui-secondary-foreground); }
+.btn[data-variant="outline"] { background: transparent; color: var(--ui-foreground); border-color: var(--ui-border); box-shadow: none; }
+.btn[data-variant="ghost"] { background: transparent; color: var(--ui-foreground); box-shadow: none; }
+.btn[data-variant="ghost"]:hover { background: var(--ui-accent); color: var(--ui-accent-foreground); }
+.btn[data-variant="destructive"] { background: var(--ui-destructive); color: var(--ui-destructive-foreground); }
+.btn[data-size="sm"] { padding: calc(var(--spacing) * 1) calc(var(--spacing) * 3); font-size: .875em; }
+.btn[data-size="lg"] { padding: calc(var(--spacing) * 3) calc(var(--spacing) * 6); font-size: 1.05em; }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+.card { background: var(--ui-card); color: var(--ui-card-foreground); border: var(--bw) solid var(--ui-border); border-radius: var(--ui-radius); box-shadow: var(--ui-shadow-sm); padding: calc(var(--spacing) * 5); }
+.field { display: flex; flex-direction: column; gap: calc(var(--spacing) * 1.5); }
+.label { font-weight: 600; font-size: .9em; }
+.desc { font-size: .85em; color: var(--ui-muted-foreground); }
+.error { font-size: .85em; color: var(--ui-destructive); font-weight: 600; }
+.input, .select {
+  font: inherit; color: var(--ui-foreground); background: var(--ui-background);
+  border: var(--bw) solid var(--ui-input); border-radius: calc(var(--ui-radius) * .75);
+  padding: calc(var(--spacing) * 2) calc(var(--spacing) * 3); width: 100%;
+}
+.input[aria-invalid="true"] { border-color: var(--ui-destructive); }
+.select { display: flex; justify-content: space-between; text-align: left; cursor: pointer; }
+.check-row { display: flex; gap: calc(var(--spacing) * 2.5); align-items: flex-start; cursor: pointer; }
+.check { appearance: none; margin: 2px 0 0; width: 18px; height: 18px; flex: none; border: var(--bw) solid var(--ui-input); border-radius: calc(var(--ui-radius) * .35); background: var(--ui-background); display: grid; place-content: center; cursor: pointer; transition: background var(--ui-duration) var(--ui-ease); }
+.check:checked { background: var(--ui-primary); border-color: var(--ui-primary); }
+.check:checked::after { content: ""; width: 9px; height: 5px; border: 2px solid var(--ui-primary-foreground); border-top: 0; border-right: 0; transform: translateY(-1px) rotate(-45deg); }
+
+.popover { background: var(--ui-popover); color: var(--ui-popover-foreground); border: var(--bw) solid var(--ui-border); border-radius: var(--ui-radius); box-shadow: var(--ui-shadow-md); padding: calc(var(--spacing) * 1.5); }
+.item { padding: calc(var(--spacing) * 1.5) calc(var(--spacing) * 3); border-radius: calc(var(--ui-radius) * .5); display: flex; justify-content: space-between; gap: 2rem; }
+.item[data-highlighted] { background: var(--ui-accent); color: var(--ui-accent-foreground); }
+.item[data-danger] { color: var(--ui-destructive); }
+.sep { height: var(--bw); background: var(--ui-border); margin: calc(var(--spacing) * 1.5) 0; }
+.dialog-backdrop { background: light-dark(oklch(0.2 0.02 285 / .35), oklch(0 0 0 / .6)); border-radius: var(--ui-radius); padding: calc(var(--spacing) * 6); display: grid; place-items: center; }
+.dialog { max-width: 380px; padding: calc(var(--spacing) * 6); }
+.toast { display: flex; gap: calc(var(--spacing) * 3); align-items: flex-start; padding: calc(var(--spacing) * 3) calc(var(--spacing) * 4); }
+.badge { display: inline-block; padding: 0 calc(var(--spacing) * 2); border-radius: 999px; background: var(--ui-secondary); color: var(--ui-secondary-foreground); font-size: .8em; font-weight: 600; }
+[data-theme="tecnico"] .badge, [data-theme="brutalista"] .badge { border-radius: var(--ui-radius); }
+.swatch-strip { display: flex; gap: 4px; flex-wrap: wrap; }
+.swatch-strip span { width: 28px; height: 28px; border-radius: calc(var(--ui-radius) * .4); border: var(--bw) solid var(--ui-border); }
+
+/* ---------- barra del prototipo: volutamente fuori dai temi ---------- */
+#proto-bar {
+  position: fixed; left: 50%; bottom: 16px; transform: translateX(-50%); z-index: 99;
+  display: flex; gap: 8px; align-items: center; padding: 8px 10px; border-radius: 999px;
+  background: #111; color: #fff; font: 13px/1.2 system-ui, sans-serif; box-shadow: 0 8px 30px rgba(0,0,0,.45);
+  color-scheme: dark;
+}
+#proto-bar button { font: inherit; background: #333; color: #fff; border: 0; border-radius: 999px; padding: 6px 10px; cursor: pointer; }
+#proto-bar button[aria-pressed="true"] { background: #fff; color: #111; }
+#proto-bar .label { min-width: 190px; text-align: center; font-weight: 600; }
+#aa-panel {
+  position: fixed; right: 16px; bottom: 76px; z-index: 99; width: 360px; max-height: 70vh; overflow: auto;
+  background: #111; color: #eee; font: 12px/1.4 system-ui, sans-serif; border-radius: 12px; padding: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+#aa-panel[hidden] { display: none; }
+#aa-panel table { width: 100%; border-collapse: collapse; }
+#aa-panel td, #aa-panel th { padding: 3px 4px; text-align: left; border-bottom: 1px solid #2a2a2a; }
+#aa-panel .ko { color: #ff7b7b; font-weight: 700; }
+#aa-panel .ok { color: #8be28b; }
+#aa-panel .note { color: #f5c26b; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<template id="page">
+  <header class="shell-header">
+    <div class="row"><span class="logo">Quaderno</span><span class="badge">beta</span></div>
+    <nav class="row" style="--g:1">
+      <button class="btn" data-variant="ghost" data-size="sm">Progetti</button>
+      <button class="btn" data-variant="ghost" data-size="sm">Attività</button>
+      <button class="btn" data-variant="outline" data-size="sm">Account</button>
+    </nav>
+  </header>
+
+  <div class="stack" style="--g:6">
+    <div class="stack" style="--g:2">
+      <h1>Impostazioni del progetto</h1>
+      <p class="muted" style="margin:0">Le modifiche valgono per tutti i membri. <span class="mono">id: prj_8f2a</span></p>
+    </div>
+
+    <div class="grid">
+      <section class="card stack">
+        <h2>Generale</h2>
+        <div class="field">
+          <label class="label" for="n">Nome</label>
+          <input class="input" id="n" value="Diario di bordo">
+          <span class="desc">Compare nell'intestazione e nelle email.</span>
+        </div>
+        <div class="field">
+          <label class="label" for="e">Email di contatto</label>
+          <input class="input" id="e" value="ciao@esempio" aria-invalid="true">
+          <span class="error">Manca il dominio, ad esempio esempio.it</span>
+        </div>
+        <div class="field">
+          <span class="label">Visibilità</span>
+          <button class="select" type="button">Solo i membri <span aria-hidden="true">▾</span></button>
+        </div>
+        <label class="check-row"><input type="checkbox" class="check" checked><span><b>Notifiche settimanali</b><br><span class="desc">Un riassunto ogni lunedì mattina.</span></span></label>
+        <label class="check-row"><input type="checkbox" class="check"><span>Rendi pubblico l'archivio</span></label>
+        <div class="row" style="justify-content:flex-end">
+          <button class="btn" data-variant="outline">Annulla</button>
+          <button class="btn">Salva modifiche</button>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h3>Menu e select aperti</h3>
+        <div class="popover" role="menu" style="max-width:260px">
+          <div class="item">Rinomina <span class="muted mono">F2</span></div>
+          <div class="item" data-highlighted>Duplica <span class="mono">⌘D</span></div>
+          <div class="item">Sposta in…</div>
+          <div class="sep"></div>
+          <div class="item" data-danger>Elimina</div>
+        </div>
+        <div class="popover" role="listbox" style="max-width:260px">
+          <div class="item">Pubblico</div>
+          <div class="item" data-highlighted>Solo i membri <span>✓</span></div>
+          <div class="item">Privato</div>
+        </div>
+        <h3>Toast</h3>
+        <div class="popover toast">
+          <span aria-hidden="true">✓</span>
+          <div class="stack" style="--g:0.5"><b>Modifiche salvate</b><span class="desc">Il progetto è aggiornato.</span></div>
+          <button class="btn" data-variant="ghost" data-size="sm">Annulla</button>
+        </div>
+      </section>
+
+      <section class="stack">
+        <h3>Dialog</h3>
+        <div class="dialog-backdrop">
+          <div class="popover dialog stack">
+            <h2>Eliminare il progetto?</h2>
+            <p class="muted" style="margin:0">Le 42 note di «Diario di bordo» vanno perse. Non si torna indietro.</p>
+            <div class="row" style="justify-content:flex-end">
+              <button class="btn" data-variant="secondary">Tieni</button>
+              <button class="btn" data-variant="destructive">Elimina</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <section class="card stack">
+      <h2>Bottoni: varianti e taglie</h2>
+      <div class="row">
+        <button class="btn">Primario</button>
+        <button class="btn" data-variant="secondary">Secondario</button>
+        <button class="btn" data-variant="outline">Contorno</button>
+        <button class="btn" data-variant="ghost">Trasparente</button>
+        <button class="btn" data-variant="destructive">Distruttivo</button>
+        <button class="btn" disabled>Disattivato</button>
+      </div>
+      <div class="row">
+        <button class="btn" data-size="sm">Piccolo</button>
+        <button class="btn">Medio</button>
+        <button class="btn" data-size="lg">Grande</button>
+      </div>
+      <p style="margin:0">Testo normale, <span class="muted">testo attenuato</span>, <span class="error">testo distruttivo</span>. Il corpo del testo deve restare leggibile a lungo: questa frase serve solo a vedere il ritmo di una riga piena accanto ai controlli.</p>
+      <div class="swatch-strip">
+        <span style="background:var(--ui-background)"></span><span style="background:var(--ui-card)"></span><span style="background:var(--ui-muted)"></span><span style="background:var(--ui-primary)"></span><span style="background:var(--ui-secondary)"></span><span style="background:var(--ui-accent)"></span><span style="background:var(--ui-destructive)"></span><span style="background:var(--ui-input)"></span>
+      </div>
+    </section>
+  </div>
+</template>
+
+<div class="panes" id="panes"></div>
+
+<!-- sonde nascoste per calcolare il contrasto in entrambi gli schemi -->
+<div id="probes" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <div data-scheme="light"></div><div data-scheme="dark"></div>
+</div>
+
+<aside id="aa-panel" hidden></aside>
+
+<div id="proto-bar" role="toolbar" aria-label="Prototipo">
+  <button id="prev" aria-label="Tema precedente">←</button>
+  <span class="label" id="lbl"></span>
+  <button id="next" aria-label="Tema successivo">→</button>
+  <button data-schema="light">Chiaro</button>
+  <button data-schema="dark">Scuro</button>
+  <button data-schema="sys">Sistema</button>
+  <button data-schema="split">Affiancati</button>
+  <button id="aa-btn">AA</button>
+</div>
+
+<script>
+const THEMES = [
+  ["morbido", "A · Morbido (identità)"],
+  ["tecnico", "B · Tecnico denso"],
+  ["editoriale", "C · Editoriale"],
+  ["brutalista", "D · Brutalista"],
+];
+// coppie del contratto: [testo/primo piano, sfondo, soglia]
+const PAIRS = [
+  ["foreground", "background", 4.5], ["card-foreground", "card", 4.5], ["popover-foreground", "popover", 4.5],
+  ["primary-foreground", "primary", 4.5], ["secondary-foreground", "secondary", 4.5],
+  ["muted-foreground", "muted", 4.5], ["muted-foreground", "background", 4.5], ["muted-foreground", "card", 4.5],
+  ["accent-foreground", "accent", 4.5], ["destructive-foreground", "destructive", 4.5],
+  ["destructive", "background", 4.5], ["destructive", "card", 4.5],
+  ["input", "background", 3], ["ring", "background", 3],
+];
+const url = new URL(location.href);
+let theme = url.searchParams.get("tema") ?? "morbido";
+let schema = url.searchParams.get("schema") ?? "light";
+const panes = document.getElementById("panes");
+const tpl = document.getElementById("page");
+
+function render() {
+  document.documentElement.dataset.theme = theme;
+  panes.replaceChildren();
+  panes.classList.toggle("split", schema === "split");
+  for (const s of schema === "split" ? ["light", "dark"] : [schema]) {
+    const p = document.createElement("div");
+    p.className = "pane";
+    if (s !== "sys") p.dataset.scheme = s;
+    p.append(tpl.content.cloneNode(true));
+    panes.append(p);
+  }
+  document.getElementById("lbl").textContent = THEMES.find(t => t[0] === theme)[1];
+  document.querySelectorAll("[data-schema]").forEach(b => b.setAttribute("aria-pressed", b.dataset.schema === schema));
+  url.searchParams.set("tema", theme); url.searchParams.set("schema", schema);
+  history.replaceState(null, "", url);
+  if (!document.getElementById("aa-panel").hidden) renderAA();
+}
+
+// il canvas converte qualsiasi colore CSS (oklch incluso) in sRGB a 8 bit
+const ctx = Object.assign(document.createElement("canvas"), { width: 1, height: 1 }).getContext("2d", { willReadFrequently: true });
+function rgb(el, token) {
+  el.style.color = `var(--ui-${token})`;
+  ctx.clearRect(0, 0, 1, 1); ctx.fillStyle = getComputedStyle(el).color; ctx.fillRect(0, 0, 1, 1);
+  return [...ctx.getImageData(0, 0, 1, 1).data].slice(0, 3);
+}
+const lum = c => { const [r, g, b] = c.map(v => { v /= 255; return v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * g + 0.0722 * b; };
+const ratio = (a, b) => { const [x, y] = [lum(a), lum(b)].sort((m, n) => n - m); return (x + 0.05) / (y + 0.05); };
+
+function renderAA() {
+  const [pl, pd] = document.querySelectorAll("#probes > div");
+  let fails = 0;
+  const rows = PAIRS.map(([fg, bg, min]) => {
+    const cells = [pl, pd].map(p => { const r = ratio(rgb(p, fg), rgb(p, bg)); if (r < min) fails++; return `<td class="${r < min ? "ko" : "ok"}">${r.toFixed(2)}</td>`; });
+    return `<tr><td>${fg} / ${bg}</td><td>${min}</td>${cells.join("")}</tr>`;
+  }).join("");
+  const extra = theme === "brutalista" ? `<p class="note">Fuori contratto: --ui-border-width (il contratto non ha uno spessore dei bordi).</p>` : "";
+  document.getElementById("aa-panel").innerHTML =
+    `<b>${THEMES.find(t => t[0] === theme)[1]}</b> · ${fails ? `<span class="ko">${fails} coppie sotto soglia</span>` : `<span class="ok">tutte le coppie AA</span>`}
+     <table><tr><th>coppia</th><th>min</th><th>chiaro</th><th>scuro</th></tr>${rows}</table>${extra}`;
+}
+
+const step = d => { const i = THEMES.findIndex(t => t[0] === theme); theme = THEMES[(i + d + THEMES.length) % THEMES.length][0]; render(); };
+document.getElementById("prev").onclick = () => step(-1);
+document.getElementById("next").onclick = () => step(1);
+document.querySelectorAll("[data-schema]").forEach(b => b.onclick = () => { schema = b.dataset.schema; render(); });
+document.getElementById("aa-btn").onclick = e => { const p = document.getElementById("aa-panel"); p.hidden = !p.hidden; e.currentTarget.setAttribute("aria-pressed", !p.hidden); render(); };
+addEventListener("keydown", e => {
+  if (e.target.closest("input, textarea, [contenteditable]")) return;
+  if (e.key === "ArrowLeft") step(-1);
+  if (e.key === "ArrowRight") step(1);
+});
+render();
+</script>
+</body>
+</html>
