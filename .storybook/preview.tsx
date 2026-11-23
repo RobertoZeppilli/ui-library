@@ -10,6 +10,8 @@ const schemes = ["light", "dark"];
 
 const preview: Preview = {
   afterEach: async (context) => {
+    // In `storybook dev` the addon's panel runs axe; looping here would flicker the theme.
+    if (import.meta.env.MODE !== "test" || context.globals.a11y?.manual) return;
     const root = document.documentElement;
     const { theme, scheme } = root.dataset;
     const failures: string[] = [];
@@ -22,7 +24,7 @@ const preview: Preview = {
           // The addon only throws in its own Vitest mode, so read its reports instead of relying on that.
           await runAxe({
             ...context,
-            globals: { ...context.globals, a11y: { manual: false } },
+            globals: { ...context.globals, a11y: { ...context.globals.a11y, manual: false } },
             reporting: { addReport: (report) => void reports.push(report) },
           });
           const failed = reports.filter((r) => r.status === "failed");
