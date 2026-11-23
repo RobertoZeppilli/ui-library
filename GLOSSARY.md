@@ -69,3 +69,17 @@ _Avoid_: llms.txt (è un formato, non il concetto), reference
 **Modifica incompatibile**:
 Un cambiamento che può rompere un consumatore che aggiorna senza toccare il proprio codice: rimuovere o rinominare una prop, un valore di variante o di dimensione, una parte, un attributo `data-slot`, un token del contratto o un percorso di import. Un cambio visivo dentro un tema esistente non lo è.
 _Avoid_: breaking change (come nome del concetto), rottura
+
+## Distribuzione
+
+**Swizzle**:
+Copiare il sorgente di un componente nel progetto del consumatore, che da quel momento lo possiede e non lo riceve più dagli aggiornamenti del pacchetto.
+_Avoid_: eject, copia
+
+**Blocco**:
+Una composizione di componenti pronta per una sezione di pagina, come un form di login.
+_Avoid_: pattern, section
+
+**Template**:
+Una pagina intera fatta di blocchi.
+_Avoid_: layout, starter
