@@ -37,3 +37,19 @@ _Avoid_: primitiva (da sola), base, headless component
 **Componente di layout**:
 Un componente senza comportamento che dispone o compone testo e altri componenti usando i token del tema (spaziatura, scala tipografica).
 _Avoid_: primitiva di layout, layout primitive
+
+**Parte**:
+Uno dei componenti che insieme formano un componente composto, come il trigger o il contenuto di un dialog.
+_Avoid_: slot, sottocomponente, pezzo
+
+**Variante**:
+L'enfasi visiva di un componente (pieno, contorno, trasparente, distruttivo), scelta fra valori chiusi.
+_Avoid_: stile, tipo, aspetto
+
+**Tono**:
+Il colore semantico del testo in un componente di layout (normale, attenuato, distruttivo). I componenti interattivi non hanno un tono: il colore sta nella variante.
+_Avoid_: colore (come nome della prop), variante di colore
+
+**Prop responsive**:
+Una prop di un componente di layout che accetta un valore diverso per ogni breakpoint, a partire da un valore iniziale senza media query.
+_Avoid_: prop adattiva, breakpoint prop
