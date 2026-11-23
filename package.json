@@ -27,6 +27,7 @@
     "typecheck": "tsc",
     "build": "tsdown",
     "prepack": "pnpm build",
+    "changeset": "changeset",
     "pack:check": "pnpm pack --dry-run",
     "build:example": "pnpm build && pnpm --filter trama-example-next build"
   },
