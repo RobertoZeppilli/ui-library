@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-23T00:00:00Z",
+  "title": "Design System: trama",
+  "extensions": {
+    "colorMeta": {
+      "brutalista-primary": { "role": "primary", "displayName": "Inchiostro / Giallo segnale", "canonical": "light-dark(oklch(0.15 0 0), oklch(0.9 0.17 100))" },
+      "brutalista-background": { "role": "neutral", "displayName": "Carta gialla / Nero pieno", "canonical": "light-dark(oklch(0.97 0.05 100), oklch(0.15 0 0))" },
+      "neon-primary": { "role": "primary", "displayName": "Magenta fotografico / Menta neon", "canonical": "light-dark(oklch(0.5 0.24 330), oklch(0.86 0.19 165))" },
+      "neon-background": { "role": "neutral", "displayName": "Carta fotografica / Viola-notte", "canonical": "light-dark(oklch(0.97 0.012 300), oklch(0.15 0.035 285))" }
+    },
+    "shadows": [
+      { "name": "brutalista-sm", "value": "3px 3px 0 var(--ui-foreground)", "purpose": "Bottoni e card: foglio incollato sopra un altro." },
+      { "name": "brutalista-md", "value": "6px 6px 0 var(--ui-foreground)", "purpose": "Popover e dialog." },
+      { "name": "neon-sm", "value": "0 0 18px -4px color-mix(in oklch, var(--ui-primary) 55%, transparent)", "purpose": "Alone del primario su bottoni e card." },
+      { "name": "neon-md", "value": "0 0 0 1px color-mix(in oklch, var(--ui-primary) 35%, transparent), 0 12px 40px -8px color-mix(in oklch, var(--ui-primary) 45%, transparent)", "purpose": "Popover e dialog." }
+    ],
+    "motion": [
+      { "name": "brutalista", "value": "0ms steps(1)", "purpose": "Nessun movimento: gli stati scattano." },
+      { "name": "neon", "value": "260ms cubic-bezier(.2, .8, .2, 1)", "purpose": "Transizioni di stato morbide." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Button primary",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Azione principale; ombra e raggio dal tema.",
+      "html": "<button class=\"ds-btn\">Save changes</button>",
+      "css": ".ds-btn { font: 600 15px/1.5 var(--ui-font-sans, 'Space Grotesk', system-ui, sans-serif); cursor: pointer; background: var(--ui-primary, oklch(0.15 0 0)); color: var(--ui-primary-foreground, oklch(0.97 0.05 100)); border: var(--ui-border-width, 2px) solid transparent; border-radius: calc(var(--ui-radius, 0rem) * .75); padding: .5rem 1rem; box-shadow: var(--ui-shadow-sm, 3px 3px 0 oklch(0.15 0 0)); transition: transform var(--ui-duration, 0ms) var(--ui-ease, steps(1)); } .ds-btn:hover { transform: translateY(-1px); } .ds-btn:active { transform: translateY(1px); } .ds-btn:focus-visible { outline: 2px solid var(--ui-ring, oklch(0.55 0.22 28)); outline-offset: 2px; }"
+    },
+    {
+      "name": "Button outline",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Azione secondaria senza fondo né ombra.",
+      "html": "<button class=\"ds-btn-outline\">Cancel</button>",
+      "css": ".ds-btn-outline { font: 600 15px/1.5 var(--ui-font-sans, 'Space Grotesk', system-ui, sans-serif); cursor: pointer; background: transparent; color: var(--ui-foreground, oklch(0.15 0 0)); border: var(--ui-border-width, 2px) solid var(--ui-border, oklch(0.15 0 0)); border-radius: calc(var(--ui-radius, 0rem) * .75); padding: .5rem 1rem; } .ds-btn-outline:focus-visible { outline: 2px solid var(--ui-ring, oklch(0.55 0.22 28)); outline-offset: 2px; }"
+    },
+    {
+      "name": "Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo di testo; bordo in --ui-input.",
+      "html": "<input class=\"ds-input\" value=\"Logbook\" aria-label=\"Name\">",
+      "css": ".ds-input { font: 400 15px/1.5 var(--ui-font-sans, 'Space Grotesk', system-ui, sans-serif); color: var(--ui-foreground, oklch(0.15 0 0)); background: var(--ui-background, oklch(0.97 0.05 100)); border: var(--ui-border-width, 2px) solid var(--ui-input, oklch(0.15 0 0)); border-radius: calc(var(--ui-radius, 0rem) * .75); padding: .5rem .75rem; } .ds-input:focus-visible { outline: 2px solid var(--ui-ring, oklch(0.55 0.22 28)); outline-offset: 2px; }"
+    },
+    {
+      "name": "Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Contenitore di sezione.",
+      "html": "<section class=\"ds-card\"><h2 class=\"ds-card-title\">General</h2><p>Shown in the header and in emails.</p></section>",
+      "css": ".ds-card { background: var(--ui-card, oklch(1 0 0)); color: var(--ui-card-foreground, oklch(0.15 0 0)); border: var(--ui-border-width, 2px) solid var(--ui-border, oklch(0.15 0 0)); border-radius: var(--ui-radius, 0rem); box-shadow: var(--ui-shadow-sm, 3px 3px 0 oklch(0.15 0 0)); padding: 1.25rem; font: 400 15px/1.5 var(--ui-font-sans, 'Space Grotesk', system-ui, sans-serif); } .ds-card-title { font-family: var(--ui-font-heading, 'Space Grotesk', system-ui, sans-serif); font-weight: var(--ui-heading-weight, 700); font-size: 1.35rem; line-height: 1.15; margin: 0 0 .5rem; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Un telaio, molti tessuti",
+    "overview": "trama è un telaio: il contratto dei token (ADR 0001) è l'ordito fisso, uguale per ogni tema, e i componenti ci lavorano sopra senza sapere quale tessuto ne uscirà. Ogni tema è un tessuto diverso intrecciato sugli stessi fili. La prova che il telaio funziona è che i due temi della v0 sono lontani su ogni asse che il contratto regge: raggio, ombra, motion, spessore dei bordi, tipografia, densità.",
+    "keyCharacteristics": [
+      "Un solo contratto di token, valorizzato per intero da ogni tema; i componenti leggono solo `--ui-*`.",
+      "Ogni colore si scrive una volta con `light-dark()`; lo schema lo sceglie `data-scheme` o il sistema.",
+      "Ogni tema × schema passa AA sulle coppie del contratto, verificato in CI.",
+      "I temi divergono sul serio: un tema nuovo che somiglia a uno esistente non entra."
+    ],
+    "rules": [
+      { "name": "La Regola del Contratto", "body": "Un colore che non è un token del contratto non esiste: niente palette di Tailwind, niente valori nei componenti. Un test lo vieta nei sorgenti della libreria.", "section": "colors" },
+      { "name": "La Regola delle Coppie", "body": "Ogni superficie ha il suo `-foreground`, e la coppia passa 4.5:1 (testo) o 3:1 (bordi input e ring) in entrambi gli schemi. Un tema che non passa non si pubblica.", "section": "colors" },
+      { "name": "La Regola dello Schema Unico", "body": "Mai `dark:` nei componenti: lo schema vive solo nei valori `light-dark()` del tema.", "section": "colors" },
+      { "name": "La Regola della Scala Condivisa", "body": "Il contratto non ha una scala tipografica: le dimensioni sono uguali in ogni tema, cambiano solo famiglie e peso dei titoli. Un tema che vuole una scala sua chiede prima un token nel contratto.", "section": "typography" },
+      { "name": "La Regola dell'Ombra nel Colore", "body": "Un'ombra che deve cambiare con lo schema prende il colore da un token (`--ui-foreground`, `--ui-primary`), mai un nero fisso.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do leggi solo token `--ui-*` (e `--spacing`) nei componenti, con le frazioni di raggio indicate sopra.",
+      "Do metti il focus come outline 2px in `--ui-ring` su `:focus-visible`, in ogni tema e su ogni elemento interattivo.",
+      "Do aggiungi un token al contratto, con default neutro, quando un tema nuovo non si esprime senza (com'è stato per `--ui-border-width`).",
+      "Do guarda e testa ogni componente nelle 4 combinazioni tema × schema."
+    ],
+    "donts": [
+      "Don't usare `dark:`, la palette di Tailwind o colori letterali nei componenti.",
+      "Don't togliere l'outline dagli input per \"pulizia\" visiva: serve un segnale di focus (WCAG 2.4.7).",
+      "Don't mettere ombre sfocate nel Brutalista o ombre nere fisse nel Neon.",
+      "Don't aggiungere un tema che somiglia all'estetica shadcn/SaaS o a un tema esistente."
+    ]
+  }
+}
