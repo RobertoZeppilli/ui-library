@@ -3,9 +3,10 @@ import { withThemeByDataAttribute } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/react-vite";
 import "../styles.css";
 import "../themes/brutalista.css";
+import "../themes/neon.css";
 
 // Every story is checked with axe in each of these combinations. Add a theme here when it ships.
-const themes = ["brutalista"];
+const themes = ["brutalista", "neon"];
 const schemes = ["light", "dark"];
 
 const preview: Preview = {
@@ -46,7 +47,19 @@ const preview: Preview = {
     }
     if (failures.length > 0) throw new Error(`axe violations in ${context.id}:\n${failures.join("\n")}`);
   },
+  globalTypes: {
+    uiTheme: {
+      description: "Theme",
+      toolbar: { title: "Theme", items: themes, dynamicTitle: true },
+    },
+  },
+  initialGlobals: { uiTheme: themes[0] },
   decorators: [
+    (Story, context) => {
+      // Outside Vitest the toolbar picks the theme; the axe loop above sets it itself.
+      document.documentElement.dataset.theme = String(context.globals.uiTheme);
+      return <Story />;
+    },
     withThemeByDataAttribute({
       themes: { light: "light", dark: "dark" },
       defaultTheme: "light",

@@ -1,5 +1,6 @@
 /* Brutalista: yellow paper, black ink, solid borders, flat offset shadows, no motion. */
-:root,
+/* :where() keeps the root default weaker than any data-theme, whatever the import order. */
+:where(:root),
 [data-theme="brutalista"] {
   --ui-background: light-dark(oklch(0.97 0.05 100), oklch(0.15 0 0));
   --ui-foreground: light-dark(oklch(0.15 0 0), oklch(0.96 0.06 100));
