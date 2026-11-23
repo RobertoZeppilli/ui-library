@@ -1,0 +1,19 @@
+{
+  "$comment": "Contrast pairs of the token contract, read by tests/contrast.test.ts. [foreground token, background token, minimum ratio], tokens without the --ui- prefix.",
+  "pairs": [
+    ["foreground", "background", 4.5],
+    ["card-foreground", "card", 4.5],
+    ["popover-foreground", "popover", 4.5],
+    ["primary-foreground", "primary", 4.5],
+    ["secondary-foreground", "secondary", 4.5],
+    ["muted-foreground", "muted", 4.5],
+    ["muted-foreground", "background", 4.5],
+    ["muted-foreground", "card", 4.5],
+    ["accent-foreground", "accent", 4.5],
+    ["destructive-foreground", "destructive", 4.5],
+    ["destructive", "background", 4.5],
+    ["destructive", "card", 4.5],
+    ["input", "background", 3],
+    ["ring", "background", 3]
+  ]
+}

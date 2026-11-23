@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@source "./dist";
+
+/* Scheme: data-scheme only sets color-scheme (ADR 0001). */
+:root { color-scheme: light dark; }
+[data-scheme="light"] { color-scheme: light; }
+[data-scheme="dark"] { color-scheme: dark; }
+
+/* Bridge from Tailwind names to the --ui-* token contract. */
+@theme inline {
+  --color-*: initial;
+  --color-background: var(--ui-background);
+  --color-foreground: var(--ui-foreground);
+  --color-card: var(--ui-card);
+  --color-card-foreground: var(--ui-card-foreground);
+  --color-popover: var(--ui-popover);
+  --color-popover-foreground: var(--ui-popover-foreground);
+  --color-primary: var(--ui-primary);
+  --color-primary-foreground: var(--ui-primary-foreground);
+  --color-secondary: var(--ui-secondary);
+  --color-secondary-foreground: var(--ui-secondary-foreground);
+  --color-muted: var(--ui-muted);
+  --color-muted-foreground: var(--ui-muted-foreground);
+  --color-accent: var(--ui-accent);
+  --color-accent-foreground: var(--ui-accent-foreground);
+  --color-destructive: var(--ui-destructive);
+  --color-destructive-foreground: var(--ui-destructive-foreground);
+  --color-border: var(--ui-border);
+  --color-input: var(--ui-input);
+  --color-ring: var(--ui-ring);
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --font-sans: var(--ui-font-sans);
+  --font-heading: var(--ui-font-heading);
+  --font-mono: var(--ui-font-mono);
+  --font-weight-heading: var(--ui-heading-weight);
+
+  /* clear Tailwind's fixed scales so only contract-driven values remain */
+  --radius-*: initial;
+  --shadow-*: initial;
+  --inset-shadow-*: initial;
+  --drop-shadow-*: initial;
+
+  --radius-xs: calc(var(--ui-radius) * 0.35);
+  --radius-sm: calc(var(--ui-radius) * 0.5);
+  --radius-md: calc(var(--ui-radius) * 0.75);
+  --radius-lg: var(--ui-radius);
+
+  --shadow-sm: var(--ui-shadow-sm);
+  --shadow-md: var(--ui-shadow-md);
+
+  --default-transition-duration: var(--ui-duration);
+  --default-transition-timing-function: var(--ui-ease);
+  --ease-ui: var(--ui-ease);
+}
+
+/* Tailwind has no theme key for border width: border-ui reads the token. */
+@utility border-ui {
+  border-style: var(--tw-border-style, solid);
+  border-width: var(--ui-border-width, 1px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* doubled selectors outrank any theme file, whatever the import order */
+  :root:root, [data-theme][data-theme] { --ui-duration: 0ms; }
+}
