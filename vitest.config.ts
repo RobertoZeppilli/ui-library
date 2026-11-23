@@ -7,6 +7,14 @@ export default defineConfig({
     projects: [
       { test: { name: "unit", include: ["tests/**/*.test.ts"] } },
       {
+        test: {
+          name: "browser",
+          include: ["src/**/*.browser.test.tsx"],
+          browser: { enabled: true, headless: true, provider: playwright(), instances: [{ browser: "chromium" }] },
+          setupFiles: [".storybook/vitest.setup.ts"],
+        },
+      },
+      {
         plugins: [storybookTest({ configDir: ".storybook" })],
         test: {
           name: "storybook",
