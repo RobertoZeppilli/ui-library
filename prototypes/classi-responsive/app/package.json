@@ -1,0 +1,7 @@
+{
+  "name": "app-proto",
+  "private": true,
+  "scripts": { "build": "next build", "start": "next start -p 3922" },
+  "dependencies": { "next": "16.4.6", "react": "^19", "react-dom": "^19", "trama-proto": "file:../pkg" },
+  "devDependencies": { "tailwindcss": "^4", "@tailwindcss/postcss": "^4", "typescript": "^5", "@types/react": "^19", "@types/node": "^22" }
+}

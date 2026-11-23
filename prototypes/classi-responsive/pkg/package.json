@@ -1,0 +1,14 @@
+{
+  "name": "trama-proto",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./a.css": "./a.css",
+    "./b.css": "./b.css"
+  },
+  "files": ["dist", "a.css", "b.css"],
+  "scripts": { "build": "node gen.mjs && tsdown" },
+  "peerDependencies": { "react": "^19", "tailwindcss": "^4" },
+  "devDependencies": { "tsdown": "0.23.7", "typescript": "^5", "@types/react": "^19", "react": "^19" }
+}
