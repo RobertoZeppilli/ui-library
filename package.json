@@ -32,6 +32,7 @@
     "typecheck": "tsc",
     "build": "tsdown && node scripts/agent-docs.ts",
     "build:docs": "node scripts/agent-docs.ts",
+    "build:storybook": "storybook build",
     "prepack": "pnpm build",
     "changeset": "changeset",
     "lint:workflows": "actionlint .github/workflows/release.yml",

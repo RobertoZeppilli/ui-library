@@ -2,5 +2,6 @@ node_modules
 .env*
 .vitest
 dist
+storybook-static
 .next
 next-env.d.ts
