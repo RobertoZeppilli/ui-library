@@ -17,7 +17,12 @@
     "./styles.css": "./styles.css",
     "./themes/*.css": "./themes/*.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobertoZeppilli/ui-library.git"
+  },
   "files": [
+    "CHANGELOG.md",
     "dist",
     "styles.css",
     "themes"
@@ -28,6 +33,7 @@
     "build": "tsdown",
     "prepack": "pnpm build",
     "changeset": "changeset",
+    "lint:workflows": "actionlint .github/workflows/release.yml",
     "pack:check": "pnpm pack --dry-run",
     "build:example": "pnpm build && pnpm --filter trama-example-next build"
   },

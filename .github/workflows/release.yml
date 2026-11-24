@@ -1,0 +1,32 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+concurrency: release-${{ github.ref }}
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write # npm trusted publishing (OIDC)
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: pnpm/action-setup@v4 # version comes from packageManager in package.json
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24 # ships npm >= 11.5.1, required for trusted publishing
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - uses: changesets/action@v1
+        with:
+          publish: pnpm exec changeset publish
+          createGithubReleases: true
+        env:
+          # PAT instead of GITHUB_TOKEN so the checks run on the "Version packages" PR
+          GITHUB_TOKEN: ${{ secrets.RELEASE_PAT }}
+          NPM_CONFIG_PROVENANCE: true
