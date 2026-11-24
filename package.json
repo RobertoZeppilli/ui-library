@@ -30,7 +30,8 @@
   "scripts": {
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc",
-    "build": "tsdown",
+    "build": "tsdown && node scripts/agent-docs.ts",
+    "build:docs": "node scripts/agent-docs.ts",
     "prepack": "pnpm build",
     "changeset": "changeset",
     "lint:workflows": "actionlint .github/workflows/release.yml",

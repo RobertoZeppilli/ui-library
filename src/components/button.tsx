@@ -24,6 +24,9 @@ const sizes = {
 } as const;
 
 export interface ButtonProps extends ButtonPrimitive.Props {
+  // Redeclared: Base UI documents `disabled` only on its state type, so the prop would reach the agent docs without a description.
+  /** Whether the button should ignore user interaction. */
+  disabled?: boolean | undefined;
   /** Visual emphasis. Same values as shadcn/ui. @default "default" */
   variant?: keyof typeof variants;
   /** Height and padding. Same values as shadcn/ui. @default "default" */
