@@ -30,6 +30,8 @@ describe("agent docs", () => {
       expect(section, `button.md has no section for ${prop}`).toBeDefined();
       // Section layout: heading, "Type:" line, blank line, then the description.
       const description = section!.split("\n\n").slice(1).join("\n\n").trim();
+      // "No description." is the placeholder the generator writes when a prop has no TSDoc.
+      expect(description, `${prop} has no TSDoc description`).not.toBe("No description.");
       expect(description.length, `${prop} has no description`).toBeGreaterThan(0);
     }
   });
