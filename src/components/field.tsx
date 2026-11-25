@@ -1,3 +1,5 @@
+"use client";
+
 import { Field as FieldPrimitive } from "@base-ui/react/field";
 import { cn } from "../lib/cn";
 
@@ -27,7 +29,7 @@ export function FieldLabel({ className, ...props }: FieldLabelProps) {
     <FieldPrimitive.Label
       data-slot="field-label"
       {...props}
-      className={merge("text-sm font-medium text-foreground data-disabled:opacity-50", className)}
+      className={merge("text-sm font-semibold text-foreground data-disabled:opacity-50", className)}
     />
   );
 }
@@ -49,5 +51,5 @@ export interface FieldErrorProps extends FieldPrimitive.Error.Props {}
 
 /** Error message, announced through `aria-describedby` on the input. Set `match` to show it regardless of the validity state. */
 export function FieldError({ className, ...props }: FieldErrorProps) {
-  return <FieldPrimitive.Error data-slot="field-error" {...props} className={merge("text-sm text-destructive", className)} />;
+  return <FieldPrimitive.Error data-slot="field-error" {...props} className={merge("text-sm font-semibold text-destructive", className)} />;
 }
