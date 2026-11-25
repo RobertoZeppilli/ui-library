@@ -1,4 +1,4 @@
-import { Button, Stack } from "trama";
+import { Button, Checkbox, Stack } from "trama";
 import { ThemeSwitch } from "./theme-switch";
 
 const variants = ["default", "outline", "secondary", "ghost", "destructive", "link"] as const;
@@ -13,6 +13,11 @@ export default function Page() {
         <Button>Two</Button>
         <Button>Three</Button>
       </Stack>
+      <div className="flex items-center gap-4">
+        <Checkbox aria-label="Unchecked" />
+        <Checkbox aria-label="Checked" defaultChecked />
+        <Checkbox aria-label="Indeterminate" indeterminate />
+      </div>
       <div className="flex flex-col gap-4">
         {variants.map((variant) => (
           <div key={variant} className="flex flex-wrap items-center gap-2">
