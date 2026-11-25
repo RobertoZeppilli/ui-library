@@ -2,11 +2,9 @@
 
 import { useRender } from "@base-ui/react/use-render";
 import { cn } from "../lib/cn";
+import { classes, type Responsive } from "../lib/responsive";
 
-// Every class is a literal string, never built by concatenation: Tailwind in the consumer finds them
-// in dist through `@source "./dist"` (ADR 0002). Each row is [initial, sm, md, lg, xl, 2xl].
-const breakpoints = ["initial", "sm", "md", "lg", "xl", "2xl"] as const;
-type Breakpoint = (typeof breakpoints)[number];
+// Class tables follow the rules in lib/responsive.ts: literal strings, rows of [initial, sm, md, lg, xl, 2xl].
 
 const direction = {
   row: ["flex-row", "sm:flex-row", "md:flex-row", "lg:flex-row", "xl:flex-row", "2xl:flex-row"],
@@ -43,21 +41,6 @@ const wrap = {
   nowrap: ["flex-nowrap", "sm:flex-nowrap", "md:flex-nowrap", "lg:flex-nowrap", "xl:flex-nowrap", "2xl:flex-nowrap"],
   wrap: ["flex-wrap", "sm:flex-wrap", "md:flex-wrap", "lg:flex-wrap", "xl:flex-wrap", "2xl:flex-wrap"],
 } as const;
-
-/** A value for every breakpoint that needs one, mobile-first: `initial` has no media query. */
-type Responsive<V extends string> = V | { [B in Breakpoint]?: V };
-
-function classes<V extends string>(
-  table: Record<V, readonly string[]>,
-  value: Responsive<V> | undefined,
-  fallback?: V,
-): (string | undefined)[] {
-  const byBreakpoint: { [B in Breakpoint]?: V } = typeof value === "object" ? value : value === undefined ? {} : { initial: value };
-  return breakpoints.map((bp) => {
-    const v = byBreakpoint[bp] ?? (bp === "initial" ? fallback : undefined);
-    return v === undefined ? undefined : table[v][breakpoints.indexOf(bp)];
-  });
-}
 
 export interface StackProps extends useRender.ComponentProps<"div"> {
   /** Main axis. Accepts a responsive object. @default "column" */
