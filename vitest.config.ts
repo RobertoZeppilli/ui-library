@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import { storybookTest } from "@storybook/addon-vitest/vitest-plugin";
 import { playwright } from "@vitest/browser-playwright";
 import { defineConfig } from "vitest/config";
@@ -7,6 +8,8 @@ export default defineConfig({
     projects: [
       { test: { name: "unit", include: ["tests/**/*.test.ts"] } },
       {
+        // Tailwind must run so the utilities exist when computed styles are read.
+        plugins: [tailwindcss()],
         test: {
           name: "browser",
           include: ["src/**/*.browser.test.tsx"],
