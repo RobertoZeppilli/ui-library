@@ -11,9 +11,9 @@ const themes = Object.fromEntries(
 const pairs = contract.pairs as [string, string, number][];
 
 it("a token added to brutalista.css shows up in the contract page model", () => {
-  const css = themes.brutalista!.replace("--ui-radius:", "--ui-brand-new: oklch(0.5 0.1 100);\n  --ui-radius:");
+  const css = themes.brutalista!.replace("--ui-radius:", "--ui-test-token: oklch(0.5 0.1 100);\n  --ui-radius:");
   const model = contractModel({ ...themes, brutalista: css }, pairs);
-  const row = model.tokens.find((t) => t.name === "--ui-brand-new");
+  const row = model.tokens.find((t) => t.name === "--ui-test-token");
   expect(row?.values.brutalista).toBe("oklch(0.5 0.1 100)");
   expect(row?.values.neon).toBeUndefined();
 });
