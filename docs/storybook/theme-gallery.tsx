@@ -14,11 +14,12 @@ export function ThemeGallery() {
             key={`${theme}-${scheme}`}
             data-theme={theme}
             data-scheme={scheme}
-            className="border-ui border-border bg-background p-4 font-sans text-foreground"
+            className="flex flex-col gap-3 border-ui border-border bg-background p-4 font-sans text-foreground"
           >
-            <h3 className="mb-3 text-base font-bold">
+            {/* div, not h3/p: the docs stylesheet sets its own color on those and hides the theme tokens. */}
+            <div className="text-base font-bold">
               {theme} / {scheme}
-            </h3>
+            </div>
             <div className="flex flex-wrap gap-2">
               {variants.map((variant) => (
                 <Button key={variant} variant={variant}>
@@ -26,7 +27,7 @@ export function ThemeGallery() {
                 </Button>
               ))}
             </div>
-            <p className="mt-3 rounded-md bg-muted p-2 text-sm text-muted-foreground">Muted text on a muted surface.</p>
+            <div className="rounded-md bg-muted p-2 text-sm text-muted-foreground">Muted text on a muted surface.</div>
           </section>
         )),
       )}
