@@ -13,5 +13,5 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "scripts", ".storybook", "vitest.config.ts"]
+  "include": ["src", "scripts", ".storybook", "docs/storybook", "vitest.config.ts"]
 }

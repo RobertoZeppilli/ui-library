@@ -10,6 +10,7 @@ const themes = ["brutalista", "neon"];
 const schemes = ["light", "dark"];
 
 const preview: Preview = {
+  tags: ["autodocs"],
   afterEach: async (context) => {
     // In `storybook dev` the addon's panel runs axe; looping here would flicker the theme.
     if (import.meta.env.MODE !== "test" || context.globals.a11y?.manual) return;

@@ -1,0 +1,16 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { ThemeGallery } from "./theme-gallery";
+
+<Meta title="Guides/Themes" />
+
+# Themes
+
+trama ships two themes, `brutalista` and `neon`, and each one has a light and a dark scheme.
+
+- The theme is set with `data-theme` on `<html>`: `brutalista` or `neon`.
+- The scheme is set with `data-scheme` on `<html>`: `light` or `dark`. Without it the browser's preference applies.
+- Import one theme file per theme you use: `@import "trama/themes/brutalista.css";`.
+
+In this Storybook the toolbar switches the theme and the scheme for every story. The four combinations are shown below.
+
+<ThemeGallery />
