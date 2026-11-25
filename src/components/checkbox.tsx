@@ -23,10 +23,11 @@ export function Checkbox({ className, ...props }: CheckboxProps) {
       {...props}
       className={(state) =>
         cn(
-          "inline-flex size-4 shrink-0 items-center justify-center rounded-sm border-ui border-border bg-background text-primary-foreground",
+          "inline-flex size-4.5 shrink-0 items-center justify-center rounded-xs border-ui border-input bg-background text-primary-foreground",
           // outline-hidden sets outline-style: none, so focus-visible must set it back to solid
           "outline-hidden focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
           "data-checked:border-primary data-checked:bg-primary data-indeterminate:border-primary data-indeterminate:bg-primary",
+          "aria-invalid:border-destructive data-invalid:border-destructive",
           "data-disabled:cursor-not-allowed data-disabled:opacity-50",
           typeof className === "function" ? className(state) : className,
         )
