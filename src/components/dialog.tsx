@@ -65,7 +65,7 @@ export function DialogContent({ className, ...props }: DialogContentProps) {
         }
       }}
     >
-      <DialogPrimitive.Backdrop data-slot="dialog-backdrop" className="fixed inset-0 z-50 bg-foreground/50" />
+      <DialogPrimitive.Backdrop data-slot="dialog-backdrop" className="fixed inset-0 z-50 bg-overlay" />
       <DialogPrimitive.Popup
         data-slot="dialog-content"
         {...props}

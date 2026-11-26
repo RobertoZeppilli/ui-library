@@ -28,6 +28,7 @@
   --color-border: var(--ui-border);
   --color-input: var(--ui-input);
   --color-ring: var(--ui-ring);
+  --color-overlay: var(--ui-overlay);
   --color-transparent: transparent;
   --color-current: currentColor;
 
