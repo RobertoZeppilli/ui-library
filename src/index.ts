@@ -26,7 +26,7 @@ export type {
   SelectTriggerProps,
   SelectValueProps,
 } from "./components/select";
-export { Stack }from "./components/stack";
+export { Stack } from "./components/stack";
 export type { StackProps } from "./components/stack";
 export { Text } from "./components/text";
 export type { TextProps } from "./components/text";

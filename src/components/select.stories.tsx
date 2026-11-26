@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSepa
 
 function Fruits({ triggerLabel = "Fruit", ...props }: { triggerLabel?: string } & Omit<React.ComponentProps<typeof Select>, "children">) {
   return (
-    <Select items={{ apple: "Apple", banana: "Banana", cherry: "Cherry" }} {...props}>
+    <Select {...props} items={{ apple: "Apple", banana: "Banana", cherry: "Cherry" }}>
       <SelectTrigger aria-label={triggerLabel} className="w-48">
         <SelectValue placeholder="Pick a fruit" />
       </SelectTrigger>
@@ -75,6 +75,7 @@ export const Keyboard: Story = {
     await expect(args.onValueChange).toHaveBeenCalledWith("banana", expect.anything());
     await waitFor(() => expect(screen.queryByRole("listbox")).toBeNull());
     await expect(trigger).toHaveFocus();
+    await expect(trigger).toHaveTextContent("Banana");
   },
 };
 

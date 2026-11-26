@@ -34,7 +34,7 @@ export default function Page() {
         <FieldDescription>We only use it to send the receipt.</FieldDescription>
         <FieldError match>Enter a valid email address.</FieldError>
       </Field>
-      <Select defaultValue="monthly">
+      <Select defaultValue="monthly" items={{ monthly: "Monthly", yearly: "Yearly" }}>
         <SelectTrigger aria-label="Billing" className="w-48">
           <SelectValue />
         </SelectTrigger>

@@ -82,13 +82,18 @@ export function SelectContent({
   ...props
 }: SelectContentProps) {
   const [trigger] = useContext(TriggerContext);
-  const theme = trigger?.closest<HTMLElement>("[data-theme]")?.dataset.theme;
-  const scheme = trigger?.closest<HTMLElement>("[data-scheme]")?.dataset.scheme;
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Positioner
-        data-theme={theme}
-        data-scheme={scheme}
+        // Read when the popup mounts, so each opening takes the current theme and scheme of the trigger's subtree.
+        ref={(node) => {
+          if (!node || !trigger) return;
+          for (const key of ["theme", "scheme"] as const) {
+            const value = trigger.closest<HTMLElement>(`[data-${key}]`)?.dataset[key];
+            if (value === undefined) delete node.dataset[key];
+            else node.dataset[key] = value;
+          }
+        }}
         side={side}
         align={align}
         sideOffset={sideOffset}
@@ -99,9 +104,10 @@ export function SelectContent({
           data-slot="select-content"
           {...props}
           className={merge(
-            "max-h-(--available-height) min-w-(--anchor-width) overflow-y-auto rounded-md border-ui border-border bg-popover p-1 text-popover-foreground shadow-md outline-hidden",
+            "max-h-(--available-height) min-w-(--anchor-width) overflow-y-auto rounded-lg border-ui border-border bg-popover p-1 font-sans text-popover-foreground shadow-md outline-hidden",
             className,
-          )}        >
+          )}
+        >
           <SelectPrimitive.List>{children}</SelectPrimitive.List>
         </SelectPrimitive.Popup>
       </SelectPrimitive.Positioner>
@@ -153,5 +159,5 @@ export interface SelectSeparatorProps extends SelectPrimitive.Separator.Props {}
 
 /** Line between items or groups. */
 export function SelectSeparator({ className, ...props }: SelectSeparatorProps) {
-  return <SelectPrimitive.Separator data-slot="select-separator" {...props} className={merge("-mx-1 my-1 h-px bg-border", className)} />;
+  return <SelectPrimitive.Separator data-slot="select-separator" {...props} className={merge("-mx-1 my-1 h-(--ui-border-width) bg-border", className)} />;
 }
