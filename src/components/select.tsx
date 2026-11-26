@@ -89,8 +89,10 @@ export function SelectContent({
         ref={(node) => {
           if (!node || !trigger) return;
           for (const key of ["theme", "scheme"] as const) {
-            const value = trigger.closest<HTMLElement>(`[data-${key}]`)?.dataset[key];
-            if (value === undefined) delete node.dataset[key];
+            const owner = trigger.closest<HTMLElement>(`[data-${key}]`);
+            const value = owner?.dataset[key];
+            // <html> is an ancestor of the portal too: inheriting keeps the popup following later changes on it.
+            if (value === undefined || owner === document.documentElement) delete node.dataset[key];
             else node.dataset[key] = value;
           }
         }}

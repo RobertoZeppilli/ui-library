@@ -34,6 +34,23 @@ it("each opening takes the theme the trigger's subtree has at that moment", asyn
   }
 });
 
+it("a theme change on <html> while the popup is open reaches the popup", async () => {
+  await Default.run();
+  await userEvent.tab();
+  await userEvent.keyboard("{Enter}");
+  const popup = await waitFor(() => {
+    const el = document.querySelector('[data-slot="select-content"]');
+    if (!el) throw new Error("popup not mounted");
+    return el;
+  });
+  document.documentElement.dataset.theme = "neon";
+  try {
+    expect(getComputedStyle(popup).getPropertyValue("--ui-radius").trim()).toBe("0.625rem");
+  } finally {
+    delete document.documentElement.dataset.theme;
+  }
+});
+
 it("the trigger shows the label of the chosen item", async () => {
   await Default.run();
   await userEvent.tab();
