@@ -26,6 +26,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - uses: changesets/action@v1
         with:
+          version: pnpm run version-packages # also bumps the version in the README agents block
           publish: pnpm exec changeset publish
           createGithubReleases: true
         env:
