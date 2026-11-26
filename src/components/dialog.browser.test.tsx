@@ -13,7 +13,7 @@ it("open dialog: repeated Tab keeps focus inside it, Escape closes it and focus 
   const dialog = await waitFor(() => within(document.body).getByRole("dialog"));
   for (let i = 0; i < 6; i++) {
     await userEvent.tab();
-    expect(dialog.contains(document.activeElement)).toBe(true);
+    await waitFor(() => expect(dialog.contains(document.activeElement), String(document.activeElement?.outerHTML.slice(0, 200))).toBe(true));
   }
   await userEvent.keyboard("{Escape}");
   await waitFor(() => expect(within(document.body).queryByRole("dialog")).toBeNull());

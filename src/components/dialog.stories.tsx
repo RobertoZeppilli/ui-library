@@ -65,7 +65,8 @@ export const Keyboard: Story = {
     });
     for (let i = 0; i < 5; i++) {
       await userEvent.tab();
-      await expect(dialog).toContainElement(document.activeElement as HTMLElement);
+      // The focus guards hand focus back asynchronously.
+      await waitFor(() => expect(dialog.contains(document.activeElement)).toBe(true));
     }
     await userEvent.keyboard("{Escape}");
     await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
