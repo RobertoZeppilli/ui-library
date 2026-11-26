@@ -4,7 +4,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSepa
 
 function Fruits({ triggerLabel = "Fruit", ...props }: { triggerLabel?: string } & Omit<React.ComponentProps<typeof Select>, "children">) {
   return (
-    <Select {...props}>
+    <Select items={{ apple: "Apple", banana: "Banana", cherry: "Cherry" }} {...props}>
       <SelectTrigger aria-label={triggerLabel} className="w-48">
         <SelectValue placeholder="Pick a fruit" />
       </SelectTrigger>
