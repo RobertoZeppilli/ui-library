@@ -13,7 +13,7 @@ export function Card({ className, render, ...props }: CardProps) {
     props: {
       "data-slot": "card",
       ...props,
-      className: cn("flex flex-col gap-4 rounded-lg border-ui border-border bg-card py-4 text-card-foreground shadow-sm", className),
+      className: cn("flex flex-col gap-4 rounded-lg border-ui border-border bg-card py-5 text-card-foreground shadow-sm", className),
     },
   });
 }
@@ -25,7 +25,7 @@ export function CardHeader({ className, render, ...props }: CardHeaderProps) {
   return useRender({
     render,
     defaultTagName: "div",
-    props: { "data-slot": "card-header", ...props, className: cn("flex flex-col gap-1 px-4", className) },
+    props: { "data-slot": "card-header", ...props, className: cn("flex flex-col gap-1 px-5", className) },
   });
 }
 
@@ -36,7 +36,7 @@ export function CardTitle({ className, render, ...props }: CardTitleProps) {
   return useRender({
     render,
     defaultTagName: "h3",
-    props: { "data-slot": "card-title", ...props, className: cn("text-base font-semibold", className) },
+    props: { "data-slot": "card-title", ...props, className: cn("text-base font-heading font-(weight:--font-weight-heading) leading-[1.15]", className) },
   });
 }
 
@@ -58,7 +58,7 @@ export function CardContent({ className, render, ...props }: CardContentProps) {
   return useRender({
     render,
     defaultTagName: "div",
-    props: { "data-slot": "card-content", ...props, className: cn("px-4", className) },
+    props: { "data-slot": "card-content", ...props, className: cn("px-5", className) },
   });
 }
 
@@ -69,6 +69,6 @@ export function CardFooter({ className, render, ...props }: CardFooterProps) {
   return useRender({
     render,
     defaultTagName: "div",
-    props: { "data-slot": "card-footer", ...props, className: cn("flex items-center gap-2 px-4", className) },
+    props: { "data-slot": "card-footer", ...props, className: cn("flex items-center gap-2 px-5", className) },
   });
 }
