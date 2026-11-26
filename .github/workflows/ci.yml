@@ -31,4 +31,5 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 24
+          package-manager-cache: false # this job has no pnpm; v5 would enable its cache from packageManager
       - run: node scripts/changeset-check.ts origin/${{ github.base_ref }}
