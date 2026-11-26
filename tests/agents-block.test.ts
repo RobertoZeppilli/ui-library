@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { agentsBlockVersionErrors } from "../scripts/agents-block";
+import { agentsBlockVersionErrors, syncAgentsBlockVersion } from "../scripts/agents-block";
 
 const read = (file: string) => readFileSync(file, "utf8");
 const readme = read("README.md");
@@ -20,6 +20,12 @@ describe("agents block version in the README", () => {
 
   it("passes when markers and heading carry the package.json version", () => {
     expect(agentsBlockVersionErrors(block("0.1.0"), "0.1.0")).toEqual([]);
+  });
+
+  it("sync rewrites marker and heading so the check passes", () => {
+    const synced = syncAgentsBlockVersion(block("0.1.0"), "0.2.0");
+    expect(agentsBlockVersionErrors(synced, "0.2.0")).toEqual([]);
+    expect(synced).toBe(block("0.2.0"));
   });
 
   it("matches the real package.json", () => {
