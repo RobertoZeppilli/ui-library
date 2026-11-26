@@ -4,10 +4,10 @@
 
 Paste this block into the `AGENTS.md` (or `CLAUDE.md`) of the project that installs `@robzepdev/trama`. The last line makes the agent load the docs shipped in the package, so they always match the installed version.
 
-<!-- trama:agents:start v0.0.0 -->
+<!-- trama:agents:start v0.1.0 -->
 
 ````md
-## trama (v0.0.0)
+## trama (v0.1.0)
 
 UI components on Base UI with the shadcn/ui API, styled through Tailwind v4 theme tokens.
 
@@ -17,7 +17,7 @@ UI components on Base UI with the shadcn/ui API, styled through Tailwind v4 them
 - Polymorphism goes through `render`, never `asChild` or `as`.
 - No `dark:` classes: colors come from tokens such as `bg-primary` and `text-foreground`.
 - Use only the `variant` and `size` values listed on the component's page.
-- Self-check before you finish: `grep -rE "asChild|dark:" src` finds nothing in the code that uses trama.
+- Self-check before you finish: `grep -rE "\basChild\b|\bdark:[a-z[!-]" src` finds nothing in the code that uses trama.
 
 Docs for each component, with props, values and examples:
 @node_modules/@robzepdev/trama/dist/AGENTS.md
@@ -25,7 +25,7 @@ Docs for each component, with props, values and examples:
 
 <!-- trama:agents:end -->
 
-The version in the markers and in the heading is bumped by hand when `package.json` changes version.
+The version in the markers and in the heading is bumped by hand when `package.json` changes version; `pnpm test` fails when they differ.
 
 ## For maintainers
 

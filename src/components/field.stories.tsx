@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
 import { expect, userEvent } from "storybook/test";
 import { Field, FieldDescription, FieldError, FieldLabel } from "./field";
 import { Input } from "./input";
@@ -30,6 +31,20 @@ export const WithError: Story = {
       <FieldError match>Enter a valid email address.</FieldError>
     </Field>
   ),
+};
+
+export const ControlledError: Story = {
+  render: () => {
+    const [email, setEmail] = useState("a@b.co");
+    const invalid = !email.includes("@");
+    return (
+      <Field invalid={invalid} className="w-72 p-4">
+        <FieldLabel>Email</FieldLabel>
+        <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <FieldError match={invalid}>Enter a valid email address.</FieldError>
+      </Field>
+    );
+  },
 };
 
 export const Disabled: Story = {

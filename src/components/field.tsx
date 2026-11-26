@@ -10,7 +10,7 @@ function merge<S>(base: string, className: string | ((state: S) => string | unde
 
 export interface FieldProps extends FieldPrimitive.Root.Props {
   // Redeclared: Base UI documents these only on its state types, so they would reach the agent docs without a description.
-  /** Whether the field is invalid. Marks the input `aria-invalid` and lets `FieldError` render. */
+  /** Whether the field is invalid. Marks the input `aria-invalid`. It does not show or hide `FieldError`: pass the same condition to `<FieldError match={invalid}>`. */
   invalid?: boolean | undefined;
   /** Whether the field and its input should ignore user interaction. */
   disabled?: boolean | undefined;
@@ -49,7 +49,7 @@ export function FieldDescription({ className, ...props }: FieldDescriptionProps)
 
 export interface FieldErrorProps extends FieldPrimitive.Error.Props {}
 
-/** Error message, announced through `aria-describedby` on the input. Set `match` to show it regardless of the validity state. */
+/** Error message, announced through `aria-describedby` on the input. `match` set to `true` always shows it, so for a controlled field pass the condition: `<FieldError match={invalid}>`. */
 export function FieldError({ className, ...props }: FieldErrorProps) {
   return <FieldPrimitive.Error data-slot="field-error" {...props} className={merge("text-sm font-semibold text-destructive", className)} />;
 }

@@ -36,6 +36,16 @@ describe("agent docs", () => {
     }
   });
 
+  it("documents toast() in the index, with signature and example", () => {
+    const index = read("docs/index.md");
+    expect(index).toContain("toast(options)");
+    expect(index).toContain('toast({ title: "Changes saved"');
+  });
+
+  it("shows only self-contained examples on the Select page", () => {
+    expect(read("docs/select.md")).not.toContain("Fruits");
+  });
+
   it("writes a consumer-only dist/AGENTS.md that points at the index and the changelog", () => {
     const agents = read("AGENTS.md");
     expect(agents).toContain("docs/index.md");
