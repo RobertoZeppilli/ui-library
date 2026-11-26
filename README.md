@@ -12,7 +12,7 @@ Paste this block into the `AGENTS.md` (or `CLAUDE.md`) of the project that insta
 UI components on Base UI with the shadcn/ui API, styled through Tailwind v4 theme tokens.
 
 - Import the CSS once, after Tailwind, in your global stylesheet:
-  `@import "@robzepdev/trama/styles.css";` and one theme, `@import "@robzepdev/trama/themes/brutalista.css";` or `@import "@robzepdev/trama/themes/neon.css";`.
+  `@import "@robzepdev/trama/styles.css";` and one theme, `@import "@robzepdev/trama/themes/brutalista.css";`, `@import "@robzepdev/trama/themes/neon.css";` or `@import "@robzepdev/trama/themes/carta.css";`.
 - Switch theme and scheme with `data-theme` and `data-scheme` on `<html>`.
 - Polymorphism goes through `render`, never `asChild` or `as`.
 - No `dark:` classes: colors come from tokens such as `bg-primary` and `text-foreground`.

@@ -1,0 +1,37 @@
+/* Carta: warm paper, near-black ink, one blue used only where you act. Flat: depth comes from fill changes and hairlines. */
+/* :where() keeps the root default weaker than any data-theme, whatever the import order. */
+:where(:root),
+[data-theme="carta"] {
+  --ui-background: light-dark(#f2f0ea, #15161a);
+  --ui-foreground: light-dark(#15161a, #f2f0ea);
+  --ui-card: light-dark(#ffffff, #1e1f25);
+  --ui-card-foreground: var(--ui-foreground);
+  --ui-popover: light-dark(#ffffff, #24262d);
+  --ui-popover-foreground: var(--ui-foreground);
+  /* Pressed primary (hover) is #1b33aa in light. */
+  --ui-primary: light-dark(#2240d8, #7c95ff);
+  --ui-primary-foreground: light-dark(#ffffff, #15161a);
+  --ui-secondary: light-dark(#e1ded5, #2a2c33);
+  --ui-secondary-foreground: var(--ui-foreground);
+  --ui-muted: light-dark(#e1ded5, #2a2c33);
+  --ui-muted-foreground: light-dark(#55534c, #a8a69c);
+  --ui-accent: light-dark(#d6d2c6, #33353d);
+  --ui-accent-foreground: var(--ui-foreground);
+  --ui-destructive: light-dark(#b3261e, #ff8a80);
+  --ui-destructive-foreground: light-dark(#ffffff, #15161a);
+  --ui-border: light-dark(#d6d2c6, #34363e);
+  --ui-input: light-dark(#7a776d, #77756d);
+  --ui-ring: var(--ui-primary);
+  --ui-overlay: light-dark(rgb(21 22 26 / 0.5), rgb(0 0 0 / 0.6));
+  --ui-font-sans: "Switzer", ui-sans-serif, system-ui, sans-serif;
+  --ui-font-heading: "Clash Grotesk", "Switzer", ui-sans-serif, sans-serif;
+  --ui-font-mono: ui-monospace, monospace;
+  --ui-heading-weight: 600;
+  --ui-radius: 1rem;
+  --ui-border-width: 1px;
+  --ui-shadow-sm: none;
+  --ui-shadow-md: none;
+  --ui-duration: 160ms;
+  --ui-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --spacing: 0.25rem;
+}

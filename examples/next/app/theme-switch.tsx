@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@robzepdev/trama";
 
-const themes = ["brutalista", "neon"] as const;
+const themes = ["brutalista", "neon", "carta"] as const;
 const schemes = ["light", "dark"] as const;
 
 /** Sets data-theme and data-scheme on <html>, the two attributes of the token contract. */

@@ -1,6 +1,6 @@
 import { Button } from "../../src/components/button";
 
-const themes = ["brutalista", "neon"];
+const themes = ["brutalista", "neon", "carta"];
 const schemes = ["light", "dark"];
 const variants = ["default", "outline", "secondary", "ghost", "destructive", "link"] as const;
 

@@ -4,9 +4,10 @@ import type { Preview } from "@storybook/react-vite";
 import "../styles.css";
 import "../themes/brutalista.css";
 import "../themes/neon.css";
+import "../themes/carta.css";
 
 // Every story is checked with axe in each of these combinations. Add a theme here when it ships.
-const themes = ["brutalista", "neon"];
+const themes = ["brutalista", "neon", "carta"];
 const schemes = ["light", "dark"];
 
 const preview: Preview = {
