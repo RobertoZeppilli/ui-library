@@ -70,7 +70,7 @@ export function DialogContent({ className, ...props }: DialogContentProps) {
         data-slot="dialog-content"
         {...props}
         className={merge(
-          "fixed top-1/2 left-1/2 z-50 grid w-[calc(100%-2rem)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 rounded-lg border-ui border-border bg-popover p-6 font-sans text-popover-foreground shadow-lg outline-hidden",
+          "fixed top-1/2 left-1/2 z-50 grid w-[calc(100%-var(--spacing)*8)] max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 rounded-lg border-ui border-border bg-popover p-6 font-sans text-popover-foreground shadow-md outline-hidden",
           className,
         )}
       />

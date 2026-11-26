@@ -22,7 +22,7 @@ export type {
   DialogTitleProps,
   DialogTriggerProps,
 } from "./components/dialog";
-export { Field,FieldDescription, FieldError, FieldLabel } from "./components/field";
+export { Field, FieldDescription, FieldError, FieldLabel } from "./components/field";
 export type { FieldDescriptionProps, FieldErrorProps, FieldLabelProps, FieldProps } from "./components/field";
 export { Input } from "./components/input";
 export type { InputProps } from "./components/input";
