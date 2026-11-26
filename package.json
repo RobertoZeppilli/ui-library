@@ -35,7 +35,7 @@
     "build:storybook": "storybook build",
     "prepack": "pnpm build",
     "changeset": "changeset",
-    "lint:workflows": "actionlint .github/workflows/release.yml",
+    "lint:workflows": "actionlint",
     "pack:check": "pnpm pack --dry-run",
     "build:example": "pnpm build && pnpm --filter trama-example-next build"
   },
