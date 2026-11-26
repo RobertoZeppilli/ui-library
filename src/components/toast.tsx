@@ -23,7 +23,7 @@ function ToastList() {
       toast={t}
       data-slot="toast"
       className={cn(
-        "absolute right-0 bottom-0 flex w-full items-start gap-2 rounded-lg border-ui border-border bg-popover p-4 text-popover-foreground shadow-md transition-[opacity,translate] duration-200 motion-reduce:transition-none",
+        "flex w-full items-start gap-2 rounded-lg border-ui border-border bg-popover p-4 text-popover-foreground shadow-md transition-[opacity,translate] duration-200 motion-reduce:transition-none",
         "data-starting-style:translate-y-2 data-starting-style:opacity-0 data-ending-style:opacity-0",
       )}
     >
@@ -42,17 +42,20 @@ function ToastList() {
   ));
 }
 
-export interface ToastProviderProps extends Omit<ToastPrimitive.Provider.Props, "toastManager"> {}
+export interface ToastProviderProps extends Omit<ToastPrimitive.Provider.Props, "toastManager"> {
+  /** Classes for the toast region, merged after the defaults: use it to move or resize the region. */
+  className?: string | undefined;
+}
 
 /** Mounts the toast region once, near the root of the app. Toasts are shown with `toast()`. */
-export function ToastProvider({ children, ...props }: ToastProviderProps) {
+export function ToastProvider({ children, className, ...props }: ToastProviderProps) {
   return (
     <ToastPrimitive.Provider toastManager={manager} {...props}>
       {children}
       <ToastPrimitive.Portal>
         <ToastPrimitive.Viewport
           data-slot="toast-viewport"
-          className="fixed right-4 bottom-4 z-50 w-[calc(100%-var(--spacing)*8)] max-w-sm font-sans"
+          className={cn("fixed right-4 bottom-4 z-50 flex w-[calc(100%-var(--spacing)*8)] max-w-sm flex-col gap-2 font-sans", className)}
         >
           <ToastList />
         </ToastPrimitive.Viewport>
