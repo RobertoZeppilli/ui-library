@@ -37,7 +37,7 @@ describe("self-check command", () => {
 
   it("ignores a `dark` key in a JS object but finds dark: classes and asChild", () => {
     const re = new RegExp(pattern(consumer)!);
-    expect(re.test('const schemes = { light: "Chiaro", dark: "Scuro" };')).toBe(false);
+    expect(re.test('const schemes = { light: "Light", dark: "Dark" };')).toBe(false);
     expect(re.test('<div className="dark:bg-black" />')).toBe(true);
     expect(re.test('<div className="p-2 hover:dark:bg-black" />')).toBe(true);
     expect(re.test("<Button asChild>x</Button>")).toBe(true);
