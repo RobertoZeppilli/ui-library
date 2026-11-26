@@ -23,7 +23,7 @@ Una libreria pensata per essere scritta da agenti: API ancorata a shadcn (varian
 
 ## Operating Context
 
-- Consumatori: solo progetti nuovi; Next 16 è il caso tipico, ma la libreria non dipende da Next. fotosottocasa, release-tracker e robertoz restano fuori.
+- Consumatori: progetti React con Tailwind 4, nuovi o da rifare; Next 16 è il caso tipico, ma la libreria non dipende da Next.
 - Il consumatore fa `@import` del CSS di `trama` nel proprio Tailwind 4 e sceglie tema e schema con `data-theme` e `data-scheme`.
 - Gli agenti leggono `node_modules/@robzepdev/trama/AGENTS.md`, importato dal consumatore con `@node_modules/@robzepdev/trama/AGENTS.md`.
 - Vetrina: Storybook su GitHub Pages, con ogni componente in ogni tema e schema.
