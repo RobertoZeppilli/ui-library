@@ -25,7 +25,7 @@ Una libreria pensata per essere scritta da agenti: API ancorata a shadcn (varian
 
 - Consumatori: solo progetti nuovi; Next 16 è il caso tipico, ma la libreria non dipende da Next. fotosottocasa, release-tracker e robertoz restano fuori.
 - Il consumatore fa `@import` del CSS di `trama` nel proprio Tailwind 4 e sceglie tema e schema con `data-theme` e `data-scheme`.
-- Gli agenti leggono `node_modules/trama/AGENTS.md`, importato dal consumatore con `@node_modules/trama/AGENTS.md`.
+- Gli agenti leggono `node_modules/@robzepdev/trama/AGENTS.md`, importato dal consumatore con `@node_modules/@robzepdev/trama/AGENTS.md`.
 - Vetrina: Storybook su GitHub Pages, con ogni componente in ogni tema e schema.
 
 ## Capabilities and Constraints
@@ -39,7 +39,7 @@ Una libreria pensata per essere scritta da agenti: API ancorata a shadcn (varian
 
 ## Brand Commitments
 
-- Nome: `trama`, senza scope npm.
+- Nome del pacchetto: `@robzepdev/trama`. Il nome `trama` senza scope npm lo rifiuta perché troppo simile a `tra-ma`; il marchio resta trama.
 - Lingua: tutto il materiale pubblico (README, vetrina, docs per agenti, changelog) è in inglese. Issue, ADR, glossario e documenti interni restano in italiano.
 
 ## Evidence on Hand

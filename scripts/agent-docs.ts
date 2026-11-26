@@ -48,7 +48,7 @@ function renderPage({ name, description, props, examples }: Component): string {
     description,
     "",
     "```tsx",
-    `import { ${name} } from "trama";`,
+    `import { ${name} } from "@robzepdev/trama";`,
     "```",
     "",
     "## Props",
