@@ -5,14 +5,21 @@ import * as stories from "./select.stories";
 
 const { Default, InThemedSubtree } = composeStories(stories);
 
+// Each key waits for the state it depends on: a key pressed before Base UI highlights an option is lost.
+async function chooseBananaByKeyboard() {
+  const option = (name: string) => within(document.body).getByRole("option", { name });
+  await waitFor(() => expect(option("Apple")).toHaveAttribute("data-highlighted"));
+  await userEvent.keyboard("{ArrowDown}");
+  await waitFor(() => expect(option("Banana")).toHaveAttribute("data-highlighted"));
+  await userEvent.keyboard("{Enter}");
+}
+
 it("opened by keyboard, ArrowDown then Enter calls onValueChange with the second value and focus returns to the trigger", async () => {
   await Default.run();
   const trigger = within(document.body).getByRole("combobox");
   await userEvent.tab();
   await userEvent.keyboard("{Enter}");
-  await waitFor(() => expect(within(document.body).getByRole("listbox")).toBeTruthy());
-  await userEvent.keyboard("{ArrowDown}");
-  await userEvent.keyboard("{Enter}");
+  await chooseBananaByKeyboard();
   expect(Default.args.onValueChange).toHaveBeenCalledWith("banana", expect.anything());
   await waitFor(() => expect(trigger).toHaveFocus());
 });
@@ -55,9 +62,7 @@ it("the trigger shows the label of the chosen item", async () => {
   await Default.run();
   await userEvent.tab();
   await userEvent.keyboard("{Enter}");
-  await waitFor(() => expect(within(document.body).getByRole("listbox")).toBeTruthy());
-  await userEvent.keyboard("{ArrowDown}");
-  await userEvent.keyboard("{Enter}");
+  await chooseBananaByKeyboard();
   await waitFor(() => expect(within(document.body).getByRole("combobox").textContent).toContain("Banana"));
 });
 

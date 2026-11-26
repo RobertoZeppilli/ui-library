@@ -69,8 +69,10 @@ export const Keyboard: Story = {
     // A focus indicator must actually paint, not just move focus (WCAG 2.4.7).
     await expect(getComputedStyle(trigger).outlineStyle).not.toBe("none");
     await userEvent.keyboard("{Enter}");
-    await waitFor(() => expect(screen.getByRole("listbox")).toBeVisible());
+    // Each key waits for the state it depends on: a key pressed before Base UI highlights an option is lost.
+    await waitFor(() => expect(screen.getByRole("option", { name: "Apple" })).toHaveAttribute("data-highlighted"));
     await userEvent.keyboard("{ArrowDown}");
+    await waitFor(() => expect(screen.getByRole("option", { name: "Banana" })).toHaveAttribute("data-highlighted"));
     await userEvent.keyboard("{Enter}");
     await expect(args.onValueChange).toHaveBeenCalledWith("banana", expect.anything());
     await waitFor(() => expect(screen.queryByRole("listbox")).toBeNull());
@@ -83,7 +85,7 @@ export const Typeahead: Story = {
   play: async ({ canvas, args }) => {
     await userEvent.tab();
     await userEvent.keyboard("{Enter}");
-    await waitFor(() => expect(screen.getByRole("listbox")).toBeVisible());
+    await waitFor(() => expect(screen.getByRole("option", { name: "Apple" })).toHaveAttribute("data-highlighted"));
     await userEvent.keyboard("ch");
     await userEvent.keyboard("{Enter}");
     await expect(args.onValueChange).toHaveBeenCalledWith("cherry", expect.anything());

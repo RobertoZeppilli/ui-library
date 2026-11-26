@@ -62,6 +62,7 @@ export const Keyboard: Story = {
     await userEvent.keyboard("{Enter}");
     await waitFor(() => expect(screen.getByRole("menu")).toBeVisible());
     await userEvent.keyboard("{ArrowDown}");
+    await waitFor(() => expect(screen.getByRole("menuitem", { name: "Duplicate" })).toHaveFocus());
     await userEvent.keyboard("{Enter}");
     await expect(onSelect).toHaveBeenCalledTimes(1);
     await waitFor(() => expect(screen.queryByRole("menu")).toBeNull());
