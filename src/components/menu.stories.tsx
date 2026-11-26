@@ -60,7 +60,7 @@ export const Keyboard: Story = {
     // A focus indicator must actually paint, not just move focus (WCAG 2.4.7).
     await expect(getComputedStyle(trigger).outlineStyle).not.toBe("none");
     await userEvent.keyboard("{Enter}");
-    await waitFor(() => expect(screen.getByRole("menu")).toBeVisible());
+    await waitFor(() => expect(screen.getByRole("menuitem", { name: "Rename" })).toHaveFocus());
     await userEvent.keyboard("{ArrowDown}");
     await waitFor(() => expect(screen.getByRole("menuitem", { name: "Duplicate" })).toHaveFocus());
     await userEvent.keyboard("{Enter}");

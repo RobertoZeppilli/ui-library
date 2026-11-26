@@ -87,6 +87,7 @@ export const Typeahead: Story = {
     await userEvent.keyboard("{Enter}");
     await waitFor(() => expect(screen.getByRole("option", { name: "Apple" })).toHaveAttribute("data-highlighted"));
     await userEvent.keyboard("ch");
+    await waitFor(() => expect(screen.getByRole("option", { name: "Cherry" })).toHaveAttribute("data-highlighted"));
     await userEvent.keyboard("{Enter}");
     await expect(args.onValueChange).toHaveBeenCalledWith("cherry", expect.anything());
     await waitFor(() => expect(canvas.getByRole("combobox")).toHaveFocus());

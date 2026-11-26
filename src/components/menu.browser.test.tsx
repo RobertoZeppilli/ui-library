@@ -10,7 +10,7 @@ it("menu opened from the keyboard: ArrowDown then Enter activates the item and c
   const trigger = within(document.body).getByRole("button", { name: "Actions" });
   await userEvent.tab();
   await userEvent.keyboard("{Enter}");
-  await waitFor(() => expect(within(document.body).getByRole("menu")).toBeVisible());
+  await waitFor(() => expect(within(document.body).getByRole("menuitem", { name: "Rename" })).toHaveFocus());
   await userEvent.keyboard("{ArrowDown}");
   await waitFor(() => expect(within(document.body).getByRole("menuitem", { name: "Duplicate" })).toHaveFocus());
   await userEvent.keyboard("{Enter}");
