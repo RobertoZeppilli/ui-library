@@ -14,6 +14,14 @@ Default vocabulary: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-
 
 Single-context: `GLOSSARY.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
 
+## Changesets
+
+Every PR that touches `src/` or `themes/` includes a changeset (`pnpm changeset`), written in English. CI fails otherwise; docs/CI-only PRs are exempt.
+
+## Release
+
+`.github/workflows/release.yml` reads the fine-grained PAT from the repo secret `RELEASE_PAT`. See the maintainers section of `README.md`.
+
 ## tai
 
 ```json

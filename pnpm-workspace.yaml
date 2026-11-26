@@ -1,0 +1,7 @@
+packages:
+  - "."
+  - "examples/*"
+
+# pnpm 11 fails the install on unapproved build scripts; esbuild (Storybook, Vite) needs its postinstall
+allowBuilds:
+  esbuild: true
