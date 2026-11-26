@@ -45,6 +45,14 @@ export function resolve(value: string, vars: Map<string, string>, scheme: Scheme
 
 // oklch -> linear sRGB (Ottosson), clamped to the gamut.
 function relativeLuminance(color: string): number {
+  const hex = /^#([\da-f]{6})$/i.exec(color);
+  if (hex) {
+    const [r, g, b] = [0, 2, 4].map((i) => {
+      const c = parseInt(hex[1]!.slice(i, i + 2), 16) / 255;
+      return c <= 0.04045 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4;
+    }) as [number, number, number];
+    return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  }
   const m = /^oklch\(\s*([\d.]+)\s+([\d.]+)\s+([\d.]+)\s*\)$/.exec(color);
   if (!m) throw new Error(`unsupported color ${color}`);
   const [L, C, h] = [Number(m[1]), Number(m[2]), (Number(m[3]) * Math.PI) / 180] as [number, number, number];
