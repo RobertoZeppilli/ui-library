@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Checkbox, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Field, FieldDescription, FieldError, FieldLabel, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Stack } from "trama";
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Checkbox, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Field, FieldDescription, FieldError, FieldLabel, Input, Menu, MenuContent, MenuItem, MenuTrigger, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Stack } from "trama";
 import { ThemeSwitch } from "./theme-switch";
 
 const variants = ["default", "outline", "secondary", "ghost", "destructive", "link"] as const;
@@ -43,6 +43,13 @@ export default function Page() {
           <SelectItem value="yearly">Yearly</SelectItem>
         </SelectContent>
       </Select>
+      <Menu>
+        <MenuTrigger className="w-fit">Actions</MenuTrigger>
+        <MenuContent>
+          <MenuItem>Rename</MenuItem>
+          <MenuItem>Duplicate</MenuItem>
+        </MenuContent>
+      </Menu>
       <Dialog>
         <DialogTrigger className="w-fit">Open dialog</DialogTrigger>
         <DialogContent>

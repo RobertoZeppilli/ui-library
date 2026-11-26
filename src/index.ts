@@ -26,7 +26,17 @@ export { Field, FieldDescription, FieldError, FieldLabel } from "./components/fi
 export type { FieldDescriptionProps, FieldErrorProps, FieldLabelProps, FieldProps } from "./components/field";
 export { Input } from "./components/input";
 export type { InputProps } from "./components/input";
-export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from "./components/select";
+export { Menu, MenuContent, MenuGroup, MenuItem, MenuLabel, MenuSeparator, MenuTrigger } from "./components/menu";
+export type {
+  MenuContentProps,
+  MenuGroupProps,
+  MenuItemProps,
+  MenuLabelProps,
+  MenuProps,
+  MenuSeparatorProps,
+  MenuTriggerProps,
+} from "./components/menu";
+export { Select,SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from "./components/select";
 export type {
   SelectContentProps,
   SelectGroupProps,
