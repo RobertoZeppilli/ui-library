@@ -1,5 +1,14 @@
 export { Button } from "./components/button";
 export type { ButtonProps } from "./components/button";
+export { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "./components/card";
+export type {
+  CardContentProps,
+  CardDescriptionProps,
+  CardFooterProps,
+  CardHeaderProps,
+  CardProps,
+  CardTitleProps,
+} from "./components/card";
 export { Checkbox } from "./components/checkbox";
 export type { CheckboxProps } from "./components/checkbox";
 export { Field, FieldDescription, FieldError, FieldLabel } from "./components/field";
