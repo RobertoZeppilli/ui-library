@@ -1,5 +1,11 @@
 # trama
 
+## 0.2.0
+
+### Minor Changes
+
+- 84078d4: Add the `--ui-overlay` token to the contract, defined by every theme for light and dark, and use it for the `Dialog` backdrop. The backdrop used `foreground` at 50%, which lightened the page in dark schemes. Custom themes must define `--ui-overlay`.
+
 ## 0.1.2
 
 ### Patch Changes

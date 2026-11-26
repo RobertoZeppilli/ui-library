@@ -4,10 +4,10 @@
 
 Paste this block into the `AGENTS.md` (or `CLAUDE.md`) of the project that installs `@robzepdev/trama`. The last line makes the agent load the docs shipped in the package, so they always match the installed version.
 
-<!-- trama:agents:start v0.1.2 -->
+<!-- trama:agents:start v0.2.0 -->
 
 ````md
-## trama (v0.1.2)
+## trama (v0.2.0)
 
 UI components on Base UI with the shadcn/ui API, styled through Tailwind v4 theme tokens.
 
