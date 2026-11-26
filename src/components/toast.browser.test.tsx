@@ -14,7 +14,8 @@ it("a shown toast appears in a live region with its text, and closing it from th
   expect(region.getAttribute("aria-live")).toBeTruthy();
   await waitFor(() => expect(within(region).getByText("Changes saved")).toBeVisible());
 
-  const close = within(region).getByRole("button", { name: /close/i });
+  // Base UI keeps Close aria-hidden until the toast is expanded or focused, so reach it by focus, as a keyboard user does.
+  const close = within(region).getByRole("button", { hidden: true });
   close.focus();
   await userEvent.keyboard("{Enter}");
   await waitFor(() => expect(within(region).queryByText("Changes saved")).toBeNull());

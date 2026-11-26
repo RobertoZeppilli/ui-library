@@ -10,7 +10,8 @@ export function componentExports(indexSource: string): { name: string; file: str
     names!
       .split(",")
       .map((n) => n.trim())
-      .filter(Boolean)
+      // Lowercase exports (e.g. `toast`) are functions, not components: they have no `<Name>Props` to document.
+      .filter((n) => /^[A-Z]/.test(n))
       .map((name) => ({ name, file: `src/${path!.replace(/^\.\//, "")}.tsx` })),
   );
 }

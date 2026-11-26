@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { useEffect } from "react";
+import { expect, screen, waitFor } from "storybook/test";
 import { Button } from "./button";
 import { ToastProvider, toast } from "./toast";
 
@@ -22,19 +22,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {};
 
-// Shown on mount, so the screenshots and axe run see a visible toast.
+// A toast that stays up, so the screenshots and the axe run see it. Shown in `play`: the provider subscribes after mount.
 export const Visible: Story = {
-  render: (args) => (
-    <ToastProvider {...args}>
-      <ShowOnMount />
-    </ToastProvider>
-  ),
   args: { timeout: 0 },
+  play: async () => {
+    toast({ title: "Changes saved", description: "Your profile is up to date." });
+    await waitFor(() => expect(screen.getByText("Changes saved")).toBeVisible());
+  },
 };
-
-function ShowOnMount() {
-  useEffect(() => {
-    toast({ title: "Changes saved", description: "Your profile is up to date.", timeout: 0 });
-  }, []);
-  return <div className="p-4 text-foreground">Page content</div>;
-}
