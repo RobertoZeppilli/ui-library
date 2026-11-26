@@ -16,4 +16,4 @@ One page per component (props, `variant`/`size` values, examples): [docs/index.m
 
 ## Self-check
 
-Before you finish: no `asChild`, no `dark:`, and every `variant`/`size` you wrote appears on the component's page.
+Before you finish: `grep -rE "\basChild\b|\bdark:[a-z[!-]" src` finds nothing in the code that uses trama (it matches `dark:` classes and the `asChild` prop, not a `dark` key in an object), and every `variant`/`size` you wrote appears on the component's page.

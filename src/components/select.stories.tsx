@@ -50,12 +50,28 @@ export const Open: Story = {
 
 export const Disabled: Story = { args: { disabled: true } };
 
+// Written out in full, without the shared helper above: this story is the example agents read in the generated docs.
 export const InThemedSubtree: Story = {
-  args: { defaultOpen: true },
-  render: (args) => (
+  render: () => (
     <div className="p-4" data-theme="neon" data-scheme="dark">
       <div className="bg-background p-4 text-foreground">
-        <Fruits {...args} />
+        <Select defaultOpen items={{ apple: "Apple", banana: "Banana", cherry: "Cherry" }}>
+          <SelectTrigger aria-label="Fruit" className="w-48">
+            <SelectValue placeholder="Pick a fruit" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectLabel>Pick one</SelectLabel>
+              <SelectItem value="apple">Apple</SelectItem>
+              <SelectItem value="banana">Banana</SelectItem>
+              <SelectItem value="cherry">Cherry</SelectItem>
+            </SelectGroup>
+            <SelectSeparator />
+            <SelectItem value="none" disabled>
+              None of these
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
     </div>
   ),

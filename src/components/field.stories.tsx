@@ -41,7 +41,7 @@ export const ControlledError: Story = {
       <Field invalid={invalid} className="w-72 p-4">
         <FieldLabel>Email</FieldLabel>
         <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        <FieldError match>Enter a valid email address.</FieldError>
+        <FieldError match={invalid}>Enter a valid email address.</FieldError>
       </Field>
     );
   },

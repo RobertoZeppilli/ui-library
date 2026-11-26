@@ -69,6 +69,19 @@ function storyExamples(storySource: string): string[] {
     .map((block) => block.trim());
 }
 
+// `toast` is a function, not a component, so it has no generated page: the index documents it.
+const TOAST_SECTION = `## toast()
+
+\`toast(options): string\` shows a toast from anywhere, also outside React, and returns its id. \`options\` accepts \`title\`, \`description\`, \`type\` and \`timeout\` (milliseconds, \`0\` keeps it open). \`toast.close(id?)\` closes one toast, or all when called without an id. Mount \`ToastProvider\` once near the root first: [ToastProvider](./toast-provider.md).
+
+\`\`\`tsx
+import { toast } from "@robzepdev/trama";
+
+const id = toast({ title: "Changes saved", description: "Your profile is up to date." });
+toast.close(id);
+\`\`\`
+`;
+
 export function generateAgentDocs({ root, outDir }: { root: string; outDir: string }): void {
   const components = componentExports(readFileSync(join(root, "src/index.ts"), "utf8"));
   mkdirSync(join(outDir, "docs"), { recursive: true });
@@ -125,7 +138,7 @@ export function generateAgentDocs({ root, outDir }: { root: string; outDir: stri
       index.push(`- [${name}](./${pageName(name)}.md): ${description.split(/(?<=\.)\s/)[0] ?? ""}`.trimEnd());
     }
 
-    writeFileSync(join(outDir, "docs", "index.md"), `# trama components\n\n${index.join("\n")}\n`);
+    writeFileSync(join(outDir, "docs", "index.md"), `# trama components\n\n${index.join("\n")}\n\n${TOAST_SECTION}`);
   } finally {
     api.close();
   }
