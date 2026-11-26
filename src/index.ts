@@ -11,6 +11,17 @@ export type {
 } from "./components/card";
 export { Checkbox } from "./components/checkbox";
 export type { CheckboxProps } from "./components/checkbox";
+export { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./components/dialog";
+export type {
+  DialogCloseProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "./components/dialog";
 export { Field, FieldDescription, FieldError, FieldLabel } from "./components/field";
 export type { FieldDescriptionProps, FieldErrorProps, FieldLabelProps, FieldProps } from "./components/field";
 export { Input } from "./components/input";

@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Checkbox, Field, FieldDescription, FieldError, FieldLabel, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Stack } from "trama";
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Checkbox, Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger, Field, FieldDescription, FieldError, FieldLabel, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Stack } from "trama";
 import { ThemeSwitch } from "./theme-switch";
 
 const variants = ["default", "outline", "secondary", "ghost", "destructive", "link"] as const;
@@ -43,6 +43,19 @@ export default function Page() {
           <SelectItem value="yearly">Yearly</SelectItem>
         </SelectContent>
       </Select>
+      <Dialog>
+        <DialogTrigger className="w-fit">Open dialog</DialogTrigger>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit profile</DialogTitle>
+            <DialogDescription>Change how your name appears to others.</DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <DialogClose>Cancel</DialogClose>
+            <DialogClose>Save</DialogClose>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
       <div className="flex flex-col gap-4">
         {variants.map((variant) => (
           <div key={variant} className="flex flex-wrap items-center gap-2">
