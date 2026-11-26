@@ -2,8 +2,24 @@ import { composeStories } from "@storybook/react-vite";
 import { userEvent, waitFor, within } from "storybook/test";
 import { expect, it } from "vitest";
 import * as stories from "./toast.stories";
+import { toast } from "./toast";
 
 const { Default } = composeStories(stories);
+
+it("two toasts shown together are both visible and do not overlap", async () => {
+  await Default.run();
+  const body = within(document.body);
+  toast({ title: "First toast", timeout: 0 });
+  toast({ title: "Second toast", timeout: 0 });
+
+  const first = await waitFor(() => body.getByRole("dialog", { name: "First toast" }));
+  const second = await waitFor(() => body.getByRole("dialog", { name: "Second toast" }));
+  await waitFor(() => expect(first).toBeVisible());
+  await waitFor(() => expect(second).toBeVisible());
+  const a = first.getBoundingClientRect();
+  const b = second.getBoundingClientRect();
+  expect(a.bottom <= b.top + 0.5 || b.bottom <= a.top + 0.5).toBe(true);
+});
 
 it("a shown toast appears in a live region with its text, and closing it from the keyboard removes it", async () => {
   await Default.run();
