@@ -15,6 +15,17 @@ export { Field, FieldDescription, FieldError, FieldLabel } from "./components/fi
 export type { FieldDescriptionProps, FieldErrorProps, FieldLabelProps, FieldProps } from "./components/field";
 export { Input } from "./components/input";
 export type { InputProps } from "./components/input";
+export { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectSeparator, SelectTrigger, SelectValue } from "./components/select";
+export type {
+  SelectContentProps,
+  SelectGroupProps,
+  SelectItemProps,
+  SelectLabelProps,
+  SelectProps,
+  SelectSeparatorProps,
+  SelectTriggerProps,
+  SelectValueProps,
+} from "./components/select";
 export { Stack } from "./components/stack";
 export type { StackProps } from "./components/stack";
 export { Text } from "./components/text";
