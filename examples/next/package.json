@@ -13,7 +13,7 @@
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "tailwindcss": "^4.3.5",
-    "trama": "workspace:*",
+    "@robzepdev/trama": "workspace:*",
     "typescript": "^7.0.2"
   },
   "devDependencies": {

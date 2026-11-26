@@ -75,6 +75,9 @@ importers:
 
   examples/next:
     dependencies:
+      '@robzepdev/trama':
+        specifier: workspace:*
+        version: link:../..
       '@tailwindcss/postcss':
         specifier: ^4.3.5
         version: 4.3.5
@@ -93,9 +96,6 @@ importers:
       tailwindcss:
         specifier: ^4.3.5
         version: 4.3.5
-      trama:
-        specifier: workspace:*
-        version: link:../..
       typescript:
         specifier: ^7.0.2
         version: 7.0.2

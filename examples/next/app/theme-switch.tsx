@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Button } from "trama";
+import { Button } from "@robzepdev/trama";
 
 const themes = ["brutalista", "neon"] as const;
 const schemes = ["light", "dark"] as const;

@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, toast } from "trama";
+import { Button, toast } from "@robzepdev/trama";
 
 export function ToastDemo() {
   return (
