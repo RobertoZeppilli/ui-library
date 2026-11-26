@@ -1,5 +1,11 @@
 # trama
 
+## 0.1.1
+
+### Patch Changes
+
+- fca67aa: Stabilize Select and Menu keyboard tests by waiting for the highlighted item before each key.
+
 ## 0.1.0
 
 ### Minor Changes
