@@ -49,5 +49,7 @@ export type {
 } from "./components/select";
 export { Stack } from "./components/stack";
 export type { StackProps } from "./components/stack";
+export { ToastProvider, toast } from "./components/toast";
+export type { ToastProviderProps } from "./components/toast";
 export { Text } from "./components/text";
 export type { TextProps } from "./components/text";
