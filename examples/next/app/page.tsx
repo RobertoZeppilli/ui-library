@@ -1,4 +1,4 @@
-import { Button, Checkbox, Field, FieldDescription, FieldError, FieldLabel, Input, Stack } from "trama";
+import { Button, Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle, Checkbox, Field, FieldDescription, FieldError, FieldLabel, Input, Stack } from "trama";
 import { ThemeSwitch } from "./theme-switch";
 
 const variants = ["default", "outline", "secondary", "ghost", "destructive", "link"] as const;
@@ -18,6 +18,16 @@ export default function Page() {
         <Checkbox aria-label="Checked" defaultChecked />
         <Checkbox aria-label="Indeterminate" indeterminate />
       </div>
+      <Card className="max-w-sm">
+        <CardHeader>
+          <CardTitle>Team plan</CardTitle>
+          <CardDescription>Up to ten members, billed monthly.</CardDescription>
+        </CardHeader>
+        <CardContent>Includes shared workspaces and priority support.</CardContent>
+        <CardFooter>
+          <Button>Upgrade</Button>
+        </CardFooter>
+      </Card>
       <Field invalid className="max-w-72">
         <FieldLabel>Email</FieldLabel>
         <Input type="email" defaultValue="not-an-email" />
