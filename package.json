@@ -1,6 +1,6 @@
 {
   "name": "@robzepdev/trama",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "type": "module",
   "packageManager": "pnpm@11.5.0",
   "engines": {
